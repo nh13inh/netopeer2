@@ -35,7 +35,7 @@
 #include "linenoise/linenoise.h"
 
 int done;
-
+char some_msg[4096];
 extern char *config_editor;
 extern struct nc_session *session;
 extern pthread_t ntf_tid;
