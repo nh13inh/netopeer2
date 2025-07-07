@@ -1,0 +1,237 @@
+
+module sonic-frr-babel {
+    namespace "http://github.com/sonic-net/frr/sonic-frr-babel";
+    prefix frr-babel;
+    yang-version 1.1;
+
+    import ietf-inet-types {
+        prefix inet;
+    }
+
+    organization
+        "SONiC";
+
+    contact
+        "SONiC";
+
+    description
+        "SONIC frr-babel FRR YANG";
+
+    revision 2024-12-23 {
+        description
+            "Initial revision.";
+    }
+    container sonic-frr-babel {
+        container BABEL_NODE {
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf redistribute {
+                    type enumeration {
+                        enum redistribute;
+                    }
+                }                  //redistribute
+                leaf ipv4 {
+                    type string;
+                }                  //FRR_IP_REDIST_STR_BABELD
+                leaf ipv6 {
+                    type string;
+                }                  //FRR_IP6_REDIST_STR_BABELD
+                leaf network {
+                    type enumeration {
+                        enum network;
+                    }
+                }                  //network
+                leaf INTERFACE_OR_ADDRESS {
+                    type string;
+                }                  //IF_OR_ADDR
+            }
+            list BABEL {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf diversity-factor {
+                    type enumeration {
+                        enum diversity-factor;
+                    }
+                }                  //diversity-factor
+                leaf FACTOR_IN_UNITS_OF {
+                    type int32;
+                }                  //(1-256)
+                leaf resend-delay {
+                    type enumeration {
+                        enum resend-delay;
+                    }
+                }                  //resend-delay
+                leaf MILLISECONDS {
+                    type int32;
+                }                  //(20-655340)
+                leaf smoothing-half-life {
+                    type enumeration {
+                        enum smoothing-half-life;
+                    }
+                }                  //smoothing-half-life
+                leaf SECONDS {
+                    type int32;
+                }                  //(0-65534)
+                leaf diversity {
+                    type enumeration {
+                        enum diversity;
+                    }
+                }                  //diversity
+            }
+            list REDISTRIBUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ipv4 {
+                    type string;
+                }                  //FRR_IP_REDIST_STR_BABELD
+                leaf ipv6 {
+                    type string;
+                }                  //FRR_IP6_REDIST_STR_BABELD
+            }
+            list DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf prefix {
+                    type enumeration {
+                        enum prefix;
+                    }
+                }                  //prefix
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST4_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming routing updates', 'Filter outgoing routing updates']
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf INTERFACE_OR_ADDRESS {
+                    type string;
+                }                  //IF_OR_ADDR
+            }
+            list NO_BABEL {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf diversity-factor {
+                    type enumeration {
+                        enum diversity-factor;
+                    }
+                }                  //diversity-factor
+                leaf FACTOR_IN_UNITS_OF {
+                    type int32;
+                }                  //(1-256)
+                leaf resend-delay {
+                    type enumeration {
+                        enum resend-delay;
+                    }
+                }                  //resend-delay
+                leaf MILLISECONDS {
+                    type int32;
+                }                  //(20-655340)
+                leaf smoothing-half-life {
+                    type enumeration {
+                        enum smoothing-half-life;
+                    }
+                }                  //smoothing-half-life
+                leaf SECONDS {
+                    type int32;
+                }                  //(0-65534)
+                leaf diversity {
+                    type enumeration {
+                        enum diversity;
+                    }
+                }                  //diversity
+            }
+            list NO_DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf prefix {
+                    type enumeration {
+                        enum prefix;
+                    }
+                }                  //prefix
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST4_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming routing updates', 'Filter outgoing routing updates']
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list IPV6_DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf prefix {
+                    type enumeration {
+                        enum prefix;
+                    }
+                }                  //prefix
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST6_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming routing updates', 'Filter outgoing routing updates']
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list NO_IPV6_DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf prefix {
+                    type enumeration {
+                        enum prefix;
+                    }
+                }                  //prefix
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST6_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming routing updates', 'Filter outgoing routing updates']
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+        }
+
+    }
+}

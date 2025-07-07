@@ -1,0 +1,27 @@
+
+module sonic-frr-enable {
+    namespace "http://github.com/sonic-net/frr/sonic-frr-enable";
+    prefix frr-enable;
+    yang-version 1.1;
+
+    import ietf-inet-types {
+        prefix inet;
+    }
+
+    organization
+        "SONiC";
+
+    contact
+        "SONiC";
+
+    description
+        "SONIC frr-enable FRR YANG";
+
+    revision 2024-12-23 {
+        description
+            "Initial revision.";
+    }
+    container sonic-frr-enable {
+
+    }
+}

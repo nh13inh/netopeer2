@@ -1,0 +1,510 @@
+
+module sonic-frr-rip {
+    namespace "http://github.com/sonic-net/frr/sonic-frr-rip";
+    prefix frr-rip;
+    yang-version 1.1;
+
+    import ietf-inet-types {
+        prefix inet;
+    }
+
+    organization
+        "SONiC";
+
+    contact
+        "SONiC";
+
+    description
+        "SONIC frr-rip FRR YANG";
+
+    revision 2024-12-23 {
+        description
+            "Initial revision.";
+    }
+    container sonic-frr-rip {
+        container RIP_NODE {
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf allow-ecmp {
+                    type enumeration {
+                        enum allow-ecmp;
+                    }
+                }                  //allow-ecmp
+                leaf neighbor {
+                    type enumeration {
+                        enum neighbor;
+                    }
+                }                  //neighbor
+                leaf NEIGHBOR_ADDRESS {
+                    type inet:ipv4-address;
+                }                  //A.B.C.D
+                leaf offset-list {
+                    type enumeration {
+                        enum offset-list;
+                    }
+                }                  //offset-list
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST4_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['For incoming updates', 'For outgoing updates']
+                leaf METRIC_VALUE {
+                    type int32;
+                }                  //(0-16)
+                leaf INTERFACE_TO_MATCH {
+                    type string;
+                }                  //IFNAME
+                leaf redistribute {
+                    type enumeration {
+                        enum redistribute;
+                    }
+                }                  //redistribute
+                leaf FRR_REDIST_HELP_STR_RIPD {
+                    type string;
+                }                  //FRR_REDIST_STR_RIPD
+                leaf metric {
+                    type enumeration {
+                        enum metric;
+                    }
+                }                  //metric
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf POINTER_TO_ROUTE-MAP_ENTRIES {
+                    type string;
+                }                  //RMAP_NAME
+                leaf route {
+                    type enumeration {
+                        enum route;
+                    }
+                }                  //route
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+            }
+            list ALLOW-ECMP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list DEFAULT-INFORMATION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf originate {
+                    type enumeration {
+                        enum originate;
+                    }
+                }                  //originate
+            }
+            list DISTANCE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf DISTANCE_VALUE {
+                    type int32;
+                }                  //(1-255)
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+                leaf ACCESS_LIST_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list NEIGHBOR {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf NEIGHBOR_ADDRESS {
+                    type inet:ipv4-address;
+                }                  //A.B.C.D
+            }
+            list NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list OFFSET-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST4_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['For incoming updates', 'For outgoing updates']
+                leaf METRIC_VALUE {
+                    type int32;
+                }                  //(0-16)
+                leaf INTERFACE_TO_MATCH {
+                    type string;
+                }                  //IFNAME
+            }
+            list PASSIVE-INTERFACE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //IFNAME
+                leaf default {
+                    type enumeration {
+                        enum default;
+                    }
+                }                  //default
+            }
+            list REDISTRIBUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf FRR_REDIST_HELP_STR_RIPD {
+                    type string;
+                }                  //FRR_REDIST_STR_RIPD
+                leaf metric {
+                    type enumeration {
+                        enum metric;
+                    }
+                }                  //metric
+                leaf METRIC_VALUE {
+                    type int32;
+                }                  //(0-16)
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf POINTER_TO_ROUTE-MAP_ENTRIES {
+                    type string;
+                }                  //RMAP_NAME
+            }
+            list ROUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+            }
+            list DEFAULT-METRIC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf DEFAULT_METRIC {
+                    type int32;
+                }                  //(1-16)
+            }
+            list DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf prefix {
+                    type enumeration {
+                        enum prefix;
+                    }
+                }                  //prefix
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST4_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming routing updates', 'Filter outgoing routing updates']
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list ROUTE-MAP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //RMAP_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Route map set for input filtering', 'Route map set for output filtering']
+                leaf ROUTE_MAP_INTERFACE_NAME {
+                    type string;
+                }                  //IFNAME
+            }
+            list TIMERS {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf basic {
+                    type enumeration {
+                        enum basic;
+                    }
+                }                  //basic
+                leaf ROUTING_TABLE_UPDATE_TIMER {
+                    type int32;
+                }                  //(5-2147483647)
+                leaf ROUTING_INFORMATION_TIMEOUT_TIMER {
+                    type int32;
+                }                  //(5-2147483647)
+                leaf GARBAGE_COLLECTION_TIMER_DEFAULT {
+                    type int32;
+                }                  //(5-2147483647)
+            }
+            list VERSION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf VERSION {
+                    type int32;
+                }                  //(1-2)
+            }
+            list NO_DEFAULT-INFORMATION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf originate {
+                    type enumeration {
+                        enum originate;
+                    }
+                }                  //originate
+            }
+            list NO_DISTANCE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf DISTANCE_VALUE {
+                    type int32;
+                }                  //(1-255)
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+                leaf ACCESS_LIST_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list NO_NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list NO_PASSIVE-INTERFACE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //IFNAME
+                leaf default {
+                    type enumeration {
+                        enum default;
+                    }
+                }                  //default
+            }
+            list NO_DEFAULT-METRIC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf DEFAULT_METRIC {
+                    type int32;
+                }                  //(1-16)
+            }
+            list NO_DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf prefix {
+                    type enumeration {
+                        enum prefix;
+                    }
+                }                  //prefix
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST4_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming routing updates', 'Filter outgoing routing updates']
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list NO_VERSION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf VERSION {
+                    type int32;
+                }                  //(1-2)
+            }
+            list NO_TIMERS_BASIC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ROUTING_TABLE_UPDATE_TIMER {
+                    type int32;
+                }                  //(5-2147483647)
+                leaf ROUTING_INFORMATION_TIMEOUT_TIMER {
+                    type int32;
+                }                  //(5-2147483647)
+                leaf GARBAGE_COLLECTION_TIMER_DEFAULT {
+                    type int32;
+                }                  //(5-2147483647)
+            }
+        }
+        container RIPNG_NODE {
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list AGGREGATE-ADDRESS {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list ALLOW-ECMP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list DEFAULT-INFORMATION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list OFFSET-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list PASSIVE-INTERFACE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list REDISTRIBUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list ROUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list DEFAULT-METRIC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list TIMERS {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list NO_DEFAULT-INFORMATION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list NO_NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list NO_DEFAULT-METRIC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list IPV6_DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list NO_IPV6_DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list NO_TIMERS_BASIC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+        }
+
+    }
+}

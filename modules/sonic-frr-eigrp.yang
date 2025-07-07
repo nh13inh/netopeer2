@@ -1,0 +1,75 @@
+
+module sonic-frr-eigrp {
+    namespace "http://github.com/sonic-net/frr/sonic-frr-eigrp";
+    prefix frr-eigrp;
+    yang-version 1.1;
+
+    import ietf-inet-types {
+        prefix inet;
+    }
+
+    organization
+        "SONiC";
+
+    contact
+        "SONiC";
+
+    description
+        "SONIC frr-eigrp FRR YANG";
+
+    revision 2024-12-23 {
+        description
+            "Initial revision.";
+    }
+    container sonic-frr-eigrp {
+        container EIGRP_NODE {
+            list DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf prefix {
+                    type enumeration {
+                        enum prefix;
+                    }
+                }                  //prefix
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming routing updates', 'Filter outgoing routing updates']
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list NO_DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf prefix {
+                    type enumeration {
+                        enum prefix;
+                    }
+                }                  //prefix
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming routing updates', 'Filter outgoing routing updates']
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+        }
+
+    }
+}

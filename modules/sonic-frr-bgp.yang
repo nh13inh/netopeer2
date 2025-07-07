@@ -1,0 +1,5014 @@
+
+module sonic-frr-bgp {
+    namespace "http://github.com/sonic-net/frr/sonic-frr-bgp";
+    prefix frr-bgp;
+    yang-version 1.1;
+
+    import ietf-inet-types {
+        prefix inet;
+    }
+
+    organization
+        "SONiC";
+
+    contact
+        "SONiC";
+
+    description
+        "SONIC frr-bgp FRR YANG";
+
+    revision 2024-12-23 {
+        description
+            "Initial revision.";
+    }
+    container sonic-frr-bgp {
+        container BGP_NODE {
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf aggregate-address {
+                    type enumeration {
+                        enum aggregate-address;
+                    }
+                }                  //aggregate-address
+                leaf IPV4_PREFIX {
+                    type union {
+                        type inet:ipv4-prefix;
+                        type inet:ipv4-address;
+                        type inet:ipv4-address;
+                    }
+                }                  //<A.B.C.D/M|A.B.C.D A.B.C.D>
+                leaf as-set {
+                    type enumeration {
+                        enum as-set;
+                    }
+                }                  //as-set
+                leaf summary-only {
+                    type enumeration {
+                        enum summary-only;
+                    }
+                }                  //summary-only
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //RMAP_NAME
+                leaf origin {
+                    type enumeration {
+                        enum origin;
+                    }
+                }                  //origin
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum egp;
+                        enum igp;
+                        enum incomplete;
+                    }
+                }                  //<egp|igp|incomplete> ['Remote EGP', 'Local IGP', 'Unknown heritage']
+                leaf matching-MED-only {
+                    type enumeration {
+                        enum matching-MED-only;
+                    }
+                }                  //matching-MED-only
+                leaf suppress-map {
+                    type enumeration {
+                        enum suppress-map;
+                    }
+                }                  //suppress-map
+                leaf ROUTE_MAP_WITH_THE {
+                    type string;
+                }                  //RMAP_NAME
+                leaf read-quanta {
+                    type enumeration {
+                        enum read-quanta;
+                    }
+                }                  //read-quanta
+                leaf NUMBER_OF_PACKETS {
+                    type int32;
+                }                  //(1-10)
+                leaf write-quanta {
+                    type enumeration {
+                        enum write-quanta;
+                    }
+                }                  //write-quanta
+                leaf auto-summary {
+                    type enumeration {
+                        enum auto-summary;
+                    }
+                }                  //auto-summary
+                leaf coalesce-time {
+                    type enumeration {
+                        enum coalesce-time;
+                    }
+                }                  //coalesce-time
+                leaf SUBGROUP_COALESCE_TIMER_VALUE {
+                    type int32;
+                }                  //(0-4294967295)
+                leaf rd {
+                    type enumeration {
+                        enum rd;
+                    }
+                }                  //rd
+                leaf synchronization {
+                    type enumeration {
+                        enum synchronization;
+                    }
+                }                  //synchronization
+                leaf table-map {
+                    type enumeration {
+                        enum table-map;
+                    }
+                }                  //table-map
+                leaf NAME_OF_THE_ROUTE {
+                    type string;
+                }                  //WORD
+                leaf vrf-policy {
+                    type enumeration {
+                        enum vrf-policy;
+                    }
+                }                  //vrf-policy
+                leaf VRF_NAME {
+                    type string;
+                }                  //NAME
+            }
+            list AGGREGATE-ADDRESS {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IPV4_PREFIX {
+                    type union {
+                        type inet:ipv4-prefix;
+                        type inet:ipv4-address;
+                        type inet:ipv4-address;
+                    }
+                }                  //<A.B.C.D/M|A.B.C.D A.B.C.D>
+                leaf as-set {
+                    type enumeration {
+                        enum as-set;
+                    }
+                }                  //as-set
+                leaf summary-only {
+                    type enumeration {
+                        enum summary-only;
+                    }
+                }                  //summary-only
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //RMAP_NAME
+                leaf origin {
+                    type enumeration {
+                        enum origin;
+                    }
+                }                  //origin
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum egp;
+                        enum igp;
+                        enum incomplete;
+                    }
+                }                  //<egp|igp|incomplete> ['Remote EGP', 'Local IGP', 'Unknown heritage']
+                leaf matching-MED-only {
+                    type enumeration {
+                        enum matching-MED-only;
+                    }
+                }                  //matching-MED-only
+                leaf suppress-map {
+                    type enumeration {
+                        enum suppress-map;
+                    }
+                }                  //suppress-map
+                leaf ROUTE_MAP_WITH_THE {
+                    type string;
+                }                  //RMAP_NAME
+            }
+            list BGP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf allow-martian-nexthop {
+                    type enumeration {
+                        enum allow-martian-nexthop;
+                    }
+                }                  //allow-martian-nexthop
+                leaf hard-administrative-reset {
+                    type enumeration {
+                        enum hard-administrative-reset;
+                    }
+                }                  //hard-administrative-reset
+                leaf suppress-fib-pending {
+                    type enumeration {
+                        enum suppress-fib-pending;
+                    }
+                }                  //suppress-fib-pending
+                leaf always-compare-med {
+                    type enumeration {
+                        enum always-compare-med;
+                    }
+                }                  //always-compare-med
+                leaf cluster-id {
+                    type enumeration {
+                        enum cluster-id;
+                    }
+                }                  //cluster-id
+                leaf ROUTE-REFLECTOR_CLUSTER-ID_IN_IP {
+                    type union {
+                        type inet:ipv4-address;
+                        type int32;
+                    }
+                }                  //<A.B.C.D|(1-4294967295)>
+                leaf deterministic-med {
+                    type enumeration {
+                        enum deterministic-med;
+                    }
+                }                  //deterministic-med
+                leaf disable-ebgp-connected-route-check {
+                    type enumeration {
+                        enum disable-ebgp-connected-route-check;
+                    }
+                }                  //disable-ebgp-connected-route-check
+                leaf ebgp-requires-policy {
+                    type enumeration {
+                        enum ebgp-requires-policy;
+                    }
+                }                  //ebgp-requires-policy
+                leaf fast-convergence {
+                    type enumeration {
+                        enum fast-convergence;
+                    }
+                }                  //fast-convergence
+                leaf fast-external-failover {
+                    type enumeration {
+                        enum fast-external-failover;
+                    }
+                }                  //fast-external-failover
+                leaf graceful-restart-disable {
+                    type enumeration {
+                        enum graceful-restart-disable;
+                    }
+                }                  //graceful-restart-disable
+                leaf log-neighbor-changes {
+                    type enumeration {
+                        enum log-neighbor-changes;
+                    }
+                }                  //log-neighbor-changes
+                leaf minimum-holdtime {
+                    type enumeration {
+                        enum minimum-holdtime;
+                    }
+                }                  //minimum-holdtime
+                leaf SECONDS {
+                    type int32;
+                }                  //(1-65535)
+                leaf reject-as-sets {
+                    type enumeration {
+                        enum reject-as-sets;
+                    }
+                }                  //reject-as-sets
+                leaf router-id {
+                    type enumeration {
+                        enum router-id;
+                    }
+                }                  //router-id
+                leaf MANUALLY_CONFIGURED_ROUTER_IDENTIFIER {
+                    type inet:ipv4-address;
+                }                  //A.B.C.D
+                leaf suppress-duplicates {
+                    type enumeration {
+                        enum suppress-duplicates;
+                    }
+                }                  //suppress-duplicates
+                leaf tcp-keepalive {
+                    type enumeration {
+                        enum tcp-keepalive;
+                    }
+                }                  //tcp-keepalive
+                leaf TCP_KEEPALIVE_IDLE_TIME {
+                    type int32;
+                }                  //(1-65535)
+                leaf TCP_KEEPALIVE_INTERVAL {
+                    type int32;
+                }                  //(1-65535)
+                leaf TCP_KEEPALIVE_MAXIMUM_PROBES {
+                    type int32;
+                }                  //(1-30)
+            }
+            list NEIGHBOR {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                    }
+                }                  //<A.B.C.D|X:X::X:X>
+                leaf aigp {
+                    type enumeration {
+                        enum aigp;
+                    }
+                }                  //aigp
+                leaf bfd {
+                    type enumeration {
+                        enum bfd;
+                    }
+                }                  //bfd
+                leaf bfd_check-control-plane-failure {
+                    type enumeration {
+                        enum bfd_check-control-plane-failure;
+                    }
+                }                  //check-control-plane-failure
+                leaf bfd_profile {
+                    type enumeration {
+                        enum bfd_profile;
+                    }
+                }                  //profile
+                leaf BFD_PROFILE_NAME {
+                    type string;
+                }                  //BFDPROF
+                leaf graceful-shutdown {
+                    type enumeration {
+                        enum graceful-shutdown;
+                    }
+                }                  //graceful-shutdown
+                leaf EBGP_PEER_USING {
+                    type enumeration {
+                        enum disable-connected-check;
+                        enum enforce-multihop;
+                    }
+                }                  //<disable-connected-check|enforce-multihop> ['one-hop away EBGP peer using loopback address', 'Enforce EBGP neighbors perform multihop']
+                leaf advertisement-interval {
+                    type enumeration {
+                        enum advertisement-interval;
+                    }
+                }                  //advertisement-interval
+                leaf TIME_IN_SECONDS {
+                    type int32;
+                }                  //(0-600)
+                leaf capability_dynamic {
+                    type enumeration {
+                        enum capability_dynamic;
+                    }
+                }                  //dynamic
+                leaf capability_extended-nexthop {
+                    type enumeration {
+                        enum capability_extended-nexthop;
+                    }
+                }                  //extended-nexthop
+                leaf description {
+                    type enumeration {
+                        enum description;
+                    }
+                }                  //description
+                leaf-list LIST {
+                    type string;
+                }                  //LINE...
+                leaf disable-link-bw-encoding-ieee {
+                    type enumeration {
+                        enum disable-link-bw-encoding-ieee;
+                    }
+                }                  //disable-link-bw-encoding-ieee
+                leaf dont-capability-negotiate {
+                    type enumeration {
+                        enum dont-capability-negotiate;
+                    }
+                }                  //dont-capability-negotiate
+                leaf ebgp-multihop {
+                    type enumeration {
+                        enum ebgp-multihop;
+                    }
+                }                  //ebgp-multihop
+                leaf enforce-first-as {
+                    type enumeration {
+                        enum enforce-first-as;
+                    }
+                }                  //enforce-first-as
+                leaf extended-optional-parameters {
+                    type enumeration {
+                        enum extended-optional-parameters;
+                    }
+                }                  //extended-optional-parameters
+                leaf graceful-restart {
+                    type enumeration {
+                        enum graceful-restart;
+                    }
+                }                  //graceful-restart
+                leaf graceful-restart-disable {
+                    type enumeration {
+                        enum graceful-restart-disable;
+                    }
+                }                  //graceful-restart-disable
+                leaf graceful-restart-helper {
+                    type enumeration {
+                        enum graceful-restart-helper;
+                    }
+                }                  //graceful-restart-helper
+                leaf local-as {
+                    type enumeration {
+                        enum local-as;
+                    }
+                }                  //local-as
+                leaf AS_NUMBER_USED_AS {
+                    type int32;
+                }                  //(1-4294967295)
+                leaf no-prepend {
+                    type enumeration {
+                        enum no-prepend;
+                    }
+                }                  //no-prepend
+                leaf no-prepend_replace-as {
+                    type enumeration {
+                        enum no-prepend_replace-as;
+                    }
+                }                  //replace-as
+                leaf local-role {
+                    type enumeration {
+                        enum local-role;
+                    }
+                }                  //local-role
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum provider;
+                        enum rs-server;
+                        enum rs-client;
+                        enum customer;
+                        enum peer;
+                    }
+                }                  //<provider|rs-server|rs-client|customer|peer> ['Providing transit', 'Route server', 'RS client', 'Using transit', 'Public/private peering']
+                leaf strict-mode {
+                    type enumeration {
+                        enum strict-mode;
+                    }
+                }                  //strict-mode
+                leaf maximum-prefix-out {
+                    type enumeration {
+                        enum maximum-prefix-out;
+                    }
+                }                  //maximum-prefix-out
+                leaf MAXIMUM_NO_OF_PREFIX {
+                    type int32;
+                }                  //(1-4294967295)
+                leaf override-capability {
+                    type enumeration {
+                        enum override-capability;
+                    }
+                }                  //override-capability
+                leaf passive {
+                    type enumeration {
+                        enum passive;
+                    }
+                }                  //passive
+                leaf password {
+                    type enumeration {
+                        enum password;
+                    }
+                }                  //password
+                leaf path-attribute_discard {
+                    type enumeration {
+                        enum path-attribute_discard;
+                    }
+                }                  //discard
+                leaf-list ATTRIBUTE_NUMBER {
+                    type int32;
+                }                  //(1-255)...
+                leaf peer-group {
+                    type enumeration {
+                        enum peer-group;
+                    }
+                }                  //peer-group
+                leaf port {
+                    type enumeration {
+                        enum port;
+                    }
+                }                  //port
+                leaf TCP_PORT_NUMBER {
+                    type int32;
+                }                  //(0-65535)
+                leaf remote-as {
+                    type enumeration {
+                        enum remote-as;
+                    }
+                }                  //remote-as
+                leaf AS_NUMBER {
+                    type int32;
+                }                  //(1-4294967295)
+                leaf BGP_PEER {
+                    type enumeration {
+                        enum internal;
+                        enum external;
+                    }
+                }                  //<internal|external> ['AS number', 'Internal BGP peer', 'External BGP peer']
+                leaf sender-as-path-loop-detection {
+                    type enumeration {
+                        enum sender-as-path-loop-detection;
+                    }
+                }                  //sender-as-path-loop-detection
+                leaf shutdown {
+                    type enumeration {
+                        enum shutdown;
+                    }
+                }                  //shutdown
+                leaf shutdown_message {
+                    type enumeration {
+                        enum shutdown_message;
+                    }
+                }                  //message
+                leaf-list MESSAGE {
+                    type string;
+                }                  //MSG...
+                leaf shutdown_rtt {
+                    type enumeration {
+                        enum shutdown_rtt;
+                    }
+                }                  //rtt
+                leaf ROUND-TRIP-TIME_IN_MILLISECONDS {
+                    type int32;
+                }                  //(1-65535)
+                leaf count {
+                    type enumeration {
+                        enum count;
+                    }
+                }                  //count
+                leaf THE_NUMBER_OF_KEEPALIVES {
+                    type int32;
+                }                  //(1-255)
+                leaf solo {
+                    type enumeration {
+                        enum solo;
+                    }
+                }                  //solo
+                leaf strict-capability-match {
+                    type enumeration {
+                        enum strict-capability-match;
+                    }
+                }                  //strict-capability-match
+                leaf tcp-mss {
+                    type enumeration {
+                        enum tcp-mss;
+                    }
+                }                  //tcp-mss
+                leaf TCP_MSS_VALUE {
+                    type int32;
+                }                  //(1-65535)
+                leaf timers {
+                    type enumeration {
+                        enum timers;
+                    }
+                }                  //timers
+                leaf KEEPALIVE_INTERVAL {
+                    type int32;
+                }                  //(0-65535)
+                leaf HOLDTIME {
+                    type int32;
+                }                  //(0-65535)
+                leaf connect {
+                    type enumeration {
+                        enum connect;
+                    }
+                }                  //connect
+                leaf CONNECT_TIMER {
+                    type int32;
+                }                  //(1-65535)
+                leaf delayopen {
+                    type enumeration {
+                        enum delayopen;
+                    }
+                }                  //delayopen
+                leaf DELAYOPENTIME_TIMER_INTERVAL {
+                    type int32;
+                }                  //(1-240)
+                leaf ttl-security_hops {
+                    type enumeration {
+                        enum ttl-security_hops;
+                    }
+                }                  //hops
+                leaf NUMBER_OF_HOPS_TO {
+                    type int32;
+                }                  //(1-254)
+                leaf update-source {
+                    type enumeration {
+                        enum update-source;
+                    }
+                }                  //update-source
+                leaf NEIGHBOR_ADDRESS {
+                    type string;
+                }                  //WORD
+                leaf timers_connect {
+                    type enumeration {
+                        enum timers_connect;
+                    }
+                }                  //connect
+                leaf timers_delayopen {
+                    type enumeration {
+                        enum timers_delayopen;
+                    }
+                }                  //delayopen
+                leaf interface {
+                    type enumeration {
+                        enum interface;
+                    }
+                }                  //interface
+                leaf interface_peer-group {
+                    type enumeration {
+                        enum interface_peer-group;
+                    }
+                }                  //peer-group
+                leaf PEER-GROUP_NAME {
+                    type string;
+                }                  //PGNAME
+                leaf interface_remote-as {
+                    type enumeration {
+                        enum interface_remote-as;
+                    }
+                }                  //remote-as
+                leaf interface_v6only {
+                    type enumeration {
+                        enum interface_v6only;
+                    }
+                }                  //interface_v6only
+                leaf interface_v6only_peer-group {
+                    type enumeration {
+                        enum interface_v6only_peer-group;
+                    }
+                }                  //peer-group
+                leaf interface_v6only_remote-as {
+                    type enumeration {
+                        enum interface_v6only_remote-as;
+                    }
+                }                  //remote-as
+            }
+            list NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf NAME_OF_THE_ROUTE {
+                    type string;
+                }                  //RMAP_NAME
+                leaf label-index {
+                    type enumeration {
+                        enum label-index;
+                    }
+                }                  //label-index
+                leaf LABEL_INDEX_VALUE {
+                    type int32;
+                }                  //(0-1048560)
+                leaf backdoor {
+                    type enumeration {
+                        enum backdoor;
+                    }
+                }                  //backdoor
+                leaf NETWORK_NUMBER {
+                    type inet:ipv4-address;
+                }                  //A.B.C.D
+                leaf mask {
+                    type enumeration {
+                        enum mask;
+                    }
+                }                  //mask
+                leaf NETWORK_MASK {
+                    type inet:ipv4-address;
+                }                  //A.B.C.D
+            }
+            list READ-QUANTA {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf NUMBER_OF_PACKETS {
+                    type int32;
+                }                  //(1-10)
+            }
+            list WRITE-QUANTA {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf NUMBER_OF_PACKETS {
+                    type int32;
+                }                  //(1-64)
+            }
+            list ADDRESS-FAMILY {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list BMP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf targets {
+                    type enumeration {
+                        enum targets;
+                    }
+                }                  //targets
+                leaf NAME_OF_THE_BMP {
+                    type string;
+                }                  //BMPTARGETS
+            }
+            list COALESCE-TIME {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf SUBGROUP_COALESCE_TIMER_VALUE {
+                    type int32;
+                }                  //(0-4294967295)
+            }
+            list DISTANCE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ADMINISTRATIVE_DISTANCE {
+                    type int32;
+                }                  //(1-255)
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+                leaf ACCESS_LIST_NAME {
+                    type string;
+                }                  //WORD
+                leaf bgp {
+                    type enumeration {
+                        enum bgp;
+                    }
+                }                  //bgp
+                leaf DISTANCE_FOR_ROUTES_EXTERNAL {
+                    type int32;
+                }                  //(1-255)
+                leaf DISTANCE_FOR_ROUTES_INTERNAL {
+                    type int32;
+                }                  //(1-255)
+                leaf DISTANCE_FOR_LOCAL_ROUTES {
+                    type int32;
+                }                  //(1-255)
+            }
+            list RFP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf example-config-value {
+                    type enumeration {
+                        enum example-config-value;
+                    }
+                }                  //example-config-value
+                leaf VALUE_TO_DISPLAY {
+                    type string;
+                }                  //VALUE
+                leaf full-table-download {
+                    type enumeration {
+                        enum full-table-download;
+                    }
+                }                  //full-table-download
+                leaf RESPONSE_FILTER_TOGGLE {
+                    type enumeration {
+                        enum on;
+                        enum off;
+                    }
+                }                  //<on|off> ['Enable RFP full table download', 'Disable RFP full table download']
+                leaf holddown-factor {
+                    type enumeration {
+                        enum holddown-factor;
+                    }
+                }                  //holddown-factor
+                leaf PERCENTAGE_OF_REGISTRATION_LIFETIME {
+                    type int32;
+                }                  //(0-4294967295)
+            }
+            list SEGMENT-ROUTING {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf srv6 {
+                    type enumeration {
+                        enum srv6;
+                    }
+                }                  //srv6
+            }
+            list TABLE-MAP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf NAME_OF_THE_ROUTE {
+                    type string;
+                }                  //WORD
+            }
+            list TIMERS {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf bgp {
+                    type enumeration {
+                        enum bgp;
+                    }
+                }                  //bgp
+                leaf KEEPALIVE_INTERVAL {
+                    type int32;
+                }                  //(0-65535)
+                leaf HOLDTIME {
+                    type int32;
+                }                  //(0-65535)
+            }
+            list UPDATE-DELAY {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf MAX_DELAY_IN_SECONDS {
+                    type int32;
+                }                  //(0-3600)
+                leaf ESTABLISH_WAIT_IN_SECONDS {
+                    type int32;
+                }                  //(1-3600)
+            }
+            list VNC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf defaults {
+                    type enumeration {
+                        enum defaults;
+                    }
+                }                  //defaults
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum bgp;
+                        enum zebra;
+                    }
+                }                  //<bgp|zebra> ['Export to BGP', 'Export to Zebra (experimental)']
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['IPv4 prefixes', 'IPv6 prefixes']
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+                leaf PREFIX_LIST_NAME {
+                    type string;
+                }                  //NAME
+                leaf group-nve_group {
+                    type enumeration {
+                        enum group-nve_group;
+                    }
+                }                  //group
+                leaf GROUP_NAME {
+                    type string;
+                }                  //NAME
+                leaf mode {
+                    type enumeration {
+                        enum mode;
+                    }
+                }                  //mode
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //NAME
+                leaf group-nve_no_group {
+                    type enumeration {
+                        enum group-nve_no_group;
+                    }
+                }                  //group
+                leaf l2-group {
+                    type enumeration {
+                        enum l2-group;
+                    }
+                }                  //l2-group
+                leaf nve-group {
+                    type enumeration {
+                        enum nve-group;
+                    }
+                }                  //nve-group
+            }
+            list VRF-POLICY {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf VRF_NAME {
+                    type string;
+                }                  //NAME
+            }
+            list NO_BGP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf allow-martian-nexthop {
+                    type enumeration {
+                        enum allow-martian-nexthop;
+                    }
+                }                  //allow-martian-nexthop
+                leaf hard-administrative-reset {
+                    type enumeration {
+                        enum hard-administrative-reset;
+                    }
+                }                  //hard-administrative-reset
+                leaf suppress-fib-pending {
+                    type enumeration {
+                        enum suppress-fib-pending;
+                    }
+                }                  //suppress-fib-pending
+                leaf always-compare-med {
+                    type enumeration {
+                        enum always-compare-med;
+                    }
+                }                  //always-compare-med
+                leaf deterministic-med {
+                    type enumeration {
+                        enum deterministic-med;
+                    }
+                }                  //deterministic-med
+                leaf disable-ebgp-connected-route-check {
+                    type enumeration {
+                        enum disable-ebgp-connected-route-check;
+                    }
+                }                  //disable-ebgp-connected-route-check
+                leaf ebgp-requires-policy {
+                    type enumeration {
+                        enum ebgp-requires-policy;
+                    }
+                }                  //ebgp-requires-policy
+                leaf fast-convergence {
+                    type enumeration {
+                        enum fast-convergence;
+                    }
+                }                  //fast-convergence
+                leaf fast-external-failover {
+                    type enumeration {
+                        enum fast-external-failover;
+                    }
+                }                  //fast-external-failover
+                leaf graceful-restart-disable {
+                    type enumeration {
+                        enum graceful-restart-disable;
+                    }
+                }                  //graceful-restart-disable
+                leaf log-neighbor-changes {
+                    type enumeration {
+                        enum log-neighbor-changes;
+                    }
+                }                  //log-neighbor-changes
+                leaf reject-as-sets {
+                    type enumeration {
+                        enum reject-as-sets;
+                    }
+                }                  //reject-as-sets
+                leaf suppress-duplicates {
+                    type enumeration {
+                        enum suppress-duplicates;
+                    }
+                }                  //suppress-duplicates
+            }
+            list NO_NEIGHBOR {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                    }
+                }                  //<A.B.C.D|X:X::X:X>
+                leaf aigp {
+                    type enumeration {
+                        enum aigp;
+                    }
+                }                  //aigp
+                leaf bfd_check-control-plane-failure {
+                    type enumeration {
+                        enum bfd_check-control-plane-failure;
+                    }
+                }                  //check-control-plane-failure
+                leaf graceful-shutdown {
+                    type enumeration {
+                        enum graceful-shutdown;
+                    }
+                }                  //graceful-shutdown
+                leaf EBGP_PEER_USING {
+                    type enumeration {
+                        enum disable-connected-check;
+                        enum enforce-multihop;
+                    }
+                }                  //<disable-connected-check|enforce-multihop> ['one-hop away EBGP peer using loopback address', 'Enforce EBGP neighbors perform multihop']
+                leaf advertisement-interval {
+                    type enumeration {
+                        enum advertisement-interval;
+                    }
+                }                  //advertisement-interval
+                leaf capability_dynamic {
+                    type enumeration {
+                        enum capability_dynamic;
+                    }
+                }                  //dynamic
+                leaf capability_extended-nexthop {
+                    type enumeration {
+                        enum capability_extended-nexthop;
+                    }
+                }                  //extended-nexthop
+                leaf description {
+                    type enumeration {
+                        enum description;
+                    }
+                }                  //description
+                leaf disable-link-bw-encoding-ieee {
+                    type enumeration {
+                        enum disable-link-bw-encoding-ieee;
+                    }
+                }                  //disable-link-bw-encoding-ieee
+                leaf dont-capability-negotiate {
+                    type enumeration {
+                        enum dont-capability-negotiate;
+                    }
+                }                  //dont-capability-negotiate
+                leaf ebgp-multihop {
+                    type enumeration {
+                        enum ebgp-multihop;
+                    }
+                }                  //ebgp-multihop
+                leaf enforce-first-as {
+                    type enumeration {
+                        enum enforce-first-as;
+                    }
+                }                  //enforce-first-as
+                leaf extended-optional-parameters {
+                    type enumeration {
+                        enum extended-optional-parameters;
+                    }
+                }                  //extended-optional-parameters
+                leaf graceful-restart {
+                    type enumeration {
+                        enum graceful-restart;
+                    }
+                }                  //graceful-restart
+                leaf graceful-restart-disable {
+                    type enumeration {
+                        enum graceful-restart-disable;
+                    }
+                }                  //graceful-restart-disable
+                leaf graceful-restart-helper {
+                    type enumeration {
+                        enum graceful-restart-helper;
+                    }
+                }                  //graceful-restart-helper
+                leaf local-as {
+                    type enumeration {
+                        enum local-as;
+                    }
+                }                  //local-as
+                leaf local-role {
+                    type enumeration {
+                        enum local-role;
+                    }
+                }                  //local-role
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum provider;
+                        enum rs-server;
+                        enum rs-client;
+                        enum customer;
+                        enum peer;
+                    }
+                }                  //<provider|rs-server|rs-client|customer|peer> ['Providing transit', 'Route server', 'RS client', 'Using transit', 'Public/private peering']
+                leaf strict-mode {
+                    type enumeration {
+                        enum strict-mode;
+                    }
+                }                  //strict-mode
+                leaf maximum-prefix-out {
+                    type enumeration {
+                        enum maximum-prefix-out;
+                    }
+                }                  //maximum-prefix-out
+                leaf override-capability {
+                    type enumeration {
+                        enum override-capability;
+                    }
+                }                  //override-capability
+                leaf passive {
+                    type enumeration {
+                        enum passive;
+                    }
+                }                  //passive
+                leaf password {
+                    type enumeration {
+                        enum password;
+                    }
+                }                  //password
+                leaf peer-group {
+                    type enumeration {
+                        enum peer-group;
+                    }
+                }                  //peer-group
+                leaf port {
+                    type enumeration {
+                        enum port;
+                    }
+                }                  //port
+                leaf sender-as-path-loop-detection {
+                    type enumeration {
+                        enum sender-as-path-loop-detection;
+                    }
+                }                  //sender-as-path-loop-detection
+                leaf shutdown {
+                    type enumeration {
+                        enum shutdown;
+                    }
+                }                  //shutdown
+                leaf shutdown_message {
+                    type enumeration {
+                        enum shutdown_message;
+                    }
+                }                  //message
+                leaf-list MESSAGE {
+                    type string;
+                }                  //MSG...
+                leaf solo {
+                    type enumeration {
+                        enum solo;
+                    }
+                }                  //solo
+                leaf strict-capability-match {
+                    type enumeration {
+                        enum strict-capability-match;
+                    }
+                }                  //strict-capability-match
+                leaf tcp-mss {
+                    type enumeration {
+                        enum tcp-mss;
+                    }
+                }                  //tcp-mss
+                leaf timers {
+                    type enumeration {
+                        enum timers;
+                    }
+                }                  //timers
+                leaf ttl-security_hops {
+                    type enumeration {
+                        enum ttl-security_hops;
+                    }
+                }                  //hops
+                leaf NUMBER_OF_HOPS_TO {
+                    type int32;
+                }                  //(1-254)
+                leaf update-source {
+                    type enumeration {
+                        enum update-source;
+                    }
+                }                  //update-source
+                leaf remote-as {
+                    type enumeration {
+                        enum remote-as;
+                    }
+                }                  //remote-as
+                leaf AS_NUMBER {
+                    type int32;
+                }                  //(1-4294967295)
+                leaf BGP_PEER {
+                    type enumeration {
+                        enum internal;
+                        enum external;
+                    }
+                }                  //<internal|external> ['AS number', 'Internal BGP peer', 'External BGP peer']
+                leaf bfd_profile {
+                    type enumeration {
+                        enum bfd_profile;
+                    }
+                }                  //bfd_profile
+                leaf path-attribute_discard {
+                    type enumeration {
+                        enum path-attribute_discard;
+                    }
+                }                  //path-attribute_discard
+                leaf shutdown_rtt {
+                    type enumeration {
+                        enum shutdown_rtt;
+                    }
+                }                  //shutdown_rtt
+                leaf timers_connect {
+                    type enumeration {
+                        enum timers_connect;
+                    }
+                }                  //timers_connect
+                leaf timers_delayopen {
+                    type enumeration {
+                        enum timers_delayopen;
+                    }
+                }                  //timers_delayopen
+                leaf NEIGHBOR_ADDRESS {
+                    type string;
+                }                  //WORD
+                leaf interface {
+                    type enumeration {
+                        enum interface;
+                    }
+                }                  //interface
+                leaf interface_peer-group {
+                    type enumeration {
+                        enum interface_peer-group;
+                    }
+                }                  //peer-group
+                leaf PEER-GROUP_NAME {
+                    type string;
+                }                  //PGNAME
+                leaf interface_remote-as {
+                    type enumeration {
+                        enum interface_remote-as;
+                    }
+                }                  //remote-as
+                leaf interface_v6only {
+                    type enumeration {
+                        enum interface_v6only;
+                    }
+                }                  //interface_v6only
+                leaf interface_v6only_peer-group {
+                    type enumeration {
+                        enum interface_v6only_peer-group;
+                    }
+                }                  //peer-group
+                leaf interface_v6only_remote-as {
+                    type enumeration {
+                        enum interface_v6only_remote-as;
+                    }
+                }                  //remote-as
+            }
+            list NO_NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf NAME_OF_THE_ROUTE {
+                    type string;
+                }                  //RMAP_NAME
+                leaf label-index {
+                    type enumeration {
+                        enum label-index;
+                    }
+                }                  //label-index
+                leaf LABEL_INDEX_VALUE {
+                    type int32;
+                }                  //(0-1048560)
+                leaf backdoor {
+                    type enumeration {
+                        enum backdoor;
+                    }
+                }                  //backdoor
+                leaf NETWORK_NUMBER {
+                    type inet:ipv4-address;
+                }                  //A.B.C.D
+                leaf mask {
+                    type enumeration {
+                        enum mask;
+                    }
+                }                  //mask
+                leaf NETWORK_MASK {
+                    type inet:ipv4-address;
+                }                  //A.B.C.D
+            }
+            list NO_DISTANCE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ADMINISTRATIVE_DISTANCE {
+                    type int32;
+                }                  //(1-255)
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+                leaf ACCESS_LIST_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list NO_SEGMENT-ROUTING {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf srv6 {
+                    type enumeration {
+                        enum srv6;
+                    }
+                }                  //srv6
+            }
+            list NO_UPDATE-DELAY {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf MAX_DELAY_IN_SECONDS {
+                    type int32;
+                }                  //(0-3600)
+                leaf ESTABLISH_WAIT_IN_SECONDS {
+                    type int32;
+                }                  //(1-3600)
+            }
+            list NO_VNC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum bgp;
+                        enum zebra;
+                    }
+                }                  //<bgp|zebra> ['Export to BGP', 'Export to Zebra (experimental)']
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['IPv4 prefixes', 'IPv6 prefixes']
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf l2-group {
+                    type enumeration {
+                        enum l2-group;
+                    }
+                }                  //l2-group
+                leaf GROUP_NAME {
+                    type string;
+                }                  //NAME
+                leaf nve-group {
+                    type enumeration {
+                        enum nve-group;
+                    }
+                }                  //nve-group
+            }
+            list BGP_BESTPATH {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf aigp {
+                    type enumeration {
+                        enum aigp;
+                    }
+                }                  //aigp
+                leaf bandwidth {
+                    type enumeration {
+                        enum bandwidth;
+                    }
+                }                  //bandwidth
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum ignore;
+                        enum skip-missing;
+                        enum default-weight-for-missing;
+                    }
+                }                  //<ignore|skip-missing|default-weight-for-missing> ['Ignore link bandwidth (i.e., do regular ECMP, not weighted)', 'Ignore paths without link bandwidth for ECMP (if other paths have it)', 'Assign a low default weight (value 1) to paths not having link bandwidth']
+                leaf compare-routerid {
+                    type enumeration {
+                        enum compare-routerid;
+                    }
+                }                  //compare-routerid
+            }
+            list BGP_CONDITIONAL-ADVERTISEMENT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf timer {
+                    type enumeration {
+                        enum timer;
+                    }
+                }                  //timer
+                leaf PERIOD_BETWEEN_BGP_TABLE {
+                    type int32;
+                }                  //(5-240)
+            }
+            list BGP_DEFAULT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum ipv4-unicast;
+                        enum ipv4-multicast;
+                        enum ipv4-vpn;
+                        enum ipv4-labeled-unicast;
+                        enum ipv4-flowspec;
+                        enum ipv6-unicast;
+                        enum ipv6-multicast;
+                        enum ipv6-vpn;
+                        enum ipv6-labeled-unicast;
+                        enum ipv6-flowspec;
+                        enum l2vpn-evpn;
+                    }
+                }                  //<ipv4-unicast|ipv4-multicast|ipv4-vpn|ipv4-labeled-unicast|ipv4-flowspec|ipv6-unicast|ipv6-multicast|ipv6-vpn|ipv6-labeled-unicast|ipv6-flowspec|l2vpn-evpn> ['Activate ipv4-unicast for a peer by default', 'Activate ipv4-multicast for a peer by default', 'Activate ipv4-vpn for a peer by default', 'Activate ipv4-labeled-unicast for a peer by default', 'Activate ipv4-flowspec for a peer by default', 'Activate ipv6-unicast for a peer by default', 'Activate ipv6-multicast for a peer by default', 'Activate ipv6-vpn for a peer by default', 'Activate ipv6-labeled-unicast for a peer by default', 'Activate ipv6-flowspec for a peer by default', 'Activate l2vpn-evpn for a peer by default']
+                leaf shutdown {
+                    type enumeration {
+                        enum shutdown;
+                    }
+                }                  //shutdown
+                leaf local-preference {
+                    type enumeration {
+                        enum local-preference;
+                    }
+                }                  //local-preference
+                leaf CONFIGURE_DEFAULT_LOCAL_PREFERENCE {
+                    type int32;
+                }                  //(0-4294967295)
+                leaf show-hostname {
+                    type enumeration {
+                        enum show-hostname;
+                    }
+                }                  //show-hostname
+                leaf show-nexthop-hostname {
+                    type enumeration {
+                        enum show-nexthop-hostname;
+                    }
+                }                  //show-nexthop-hostname
+                leaf subgroup-pkt-queue-max {
+                    type enumeration {
+                        enum subgroup-pkt-queue-max;
+                    }
+                }                  //subgroup-pkt-queue-max
+                leaf CONFIGURE_SUBGROUP_PACKET_QUEUE {
+                    type int32;
+                }                  //(20-100)
+            }
+            list BGP_GRACEFUL-RESTART {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf notification {
+                    type enumeration {
+                        enum notification;
+                    }
+                }                  //notification
+                leaf disable-eor {
+                    type enumeration {
+                        enum disable-eor;
+                    }
+                }                  //disable-eor
+                leaf preserve-fw-state {
+                    type enumeration {
+                        enum preserve-fw-state;
+                    }
+                }                  //preserve-fw-state
+                leaf restart-time {
+                    type enumeration {
+                        enum restart-time;
+                    }
+                }                  //restart-time
+                leaf DELAY_VALUE {
+                    type int32;
+                }                  //(0-4095)
+                leaf rib-stale-time {
+                    type enumeration {
+                        enum rib-stale-time;
+                    }
+                }                  //rib-stale-time
+                leaf select-defer-time {
+                    type enumeration {
+                        enum select-defer-time;
+                    }
+                }                  //select-defer-time
+                leaf stalepath-time {
+                    type enumeration {
+                        enum stalepath-time;
+                    }
+                }                  //stalepath-time
+            }
+            list BGP_CLIENT-TO-CLIENT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf reflection {
+                    type enumeration {
+                        enum reflection;
+                    }
+                }                  //reflection
+            }
+            list BGP_CONFEDERATION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf identifier {
+                    type enumeration {
+                        enum identifier;
+                    }
+                }                  //identifier
+                leaf SET_ROUTING_DOMAIN_CONFEDERATION {
+                    type int32;
+                }                  //(1-4294967295)
+                leaf peers {
+                    type enumeration {
+                        enum peers;
+                    }
+                }                  //peers
+                leaf-list AS_NUMBER {
+                    type int32;
+                }                  //(1-4294967295)...
+            }
+            list BGP_DAMPENING {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf HALF-LIFE_TIME_FOR_THE {
+                    type int32;
+                }                  //(1-45)
+                leaf VALUE_TO_START_REUSING {
+                    type int32;
+                }                  //(1-20000)
+                leaf VALUE_TO_START_SUPPRESSING {
+                    type int32;
+                }                  //(1-50000)
+                leaf MAXIMUM_DURATION_TO_SUPPRESS {
+                    type int32;
+                }                  //(1-255)
+            }
+            list BGP_LISTEN {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf limit {
+                    type enumeration {
+                        enum limit;
+                    }
+                }                  //limit
+                leaf CONFIGURE_DYNAMIC_NEIGHBORS_LISTEN {
+                    type int32;
+                }                  //(1-65535)
+                leaf range {
+                    type enumeration {
+                        enum range;
+                    }
+                }                  //range
+                leaf IPV4_PREFIX {
+                    type union {
+                        type inet:ipv4-prefix;
+                        type inet:ipv6-prefix;
+                    }
+                }                  //<A.B.C.D/M|X:X::X:X/M>
+                leaf peer-group {
+                    type enumeration {
+                        enum peer-group;
+                    }
+                }                  //peer-group
+                leaf PEER-GROUP_NAME {
+                    type string;
+                }                  //PGNAME
+            }
+            list BGP_LONG-LIVED-GRACEFUL-RESTART {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf stale-time {
+                    type enumeration {
+                        enum stale-time;
+                    }
+                }                  //stale-time
+                leaf STALE_TIME_VALUE {
+                    type int32;
+                }                  //(1-16777215)
+            }
+            list BGP_MAX-MED {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf on-startup {
+                    type enumeration {
+                        enum on-startup;
+                    }
+                }                  //on-startup
+                leaf TIME_PERIOD_FOR_MAX-MED {
+                    type int32;
+                }                  //(5-86400)
+                leaf MAX_MED_VALUE_TO {
+                    type int32;
+                }                  //(0-4294967295)
+            }
+            list BGP_NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf import-check {
+                    type enumeration {
+                        enum import-check;
+                    }
+                }                  //import-check
+            }
+            list BGP_ROUTE-REFLECTOR {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf allow-outbound-policy {
+                    type enumeration {
+                        enum allow-outbound-policy;
+                    }
+                }                  //allow-outbound-policy
+            }
+            list BGP_SHUTDOWN {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf message {
+                    type enumeration {
+                        enum message;
+                    }
+                }                  //message
+                leaf-list MESSAGE {
+                    type string;
+                }                  //MSG...
+            }
+            list ADDRESS-FAMILY_IPV4 {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf unicast {
+                    type enumeration {
+                        enum unicast;
+                    }
+                }                  //unicast
+                leaf flowspec {
+                    type enumeration {
+                        enum flowspec;
+                    }
+                }                  //flowspec
+                leaf labeled-unicast {
+                    type enumeration {
+                        enum labeled-unicast;
+                    }
+                }                  //labeled-unicast
+                leaf multicast {
+                    type enumeration {
+                        enum multicast;
+                    }
+                }                  //multicast
+                leaf vpn {
+                    type enumeration {
+                        enum vpn;
+                    }
+                }                  //vpn
+            }
+            list ADDRESS-FAMILY_IPV6 {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf unicast {
+                    type enumeration {
+                        enum unicast;
+                    }
+                }                  //unicast
+                leaf flowspec {
+                    type enumeration {
+                        enum flowspec;
+                    }
+                }                  //flowspec
+                leaf labeled-unicast {
+                    type enumeration {
+                        enum labeled-unicast;
+                    }
+                }                  //labeled-unicast
+                leaf multicast {
+                    type enumeration {
+                        enum multicast;
+                    }
+                }                  //multicast
+                leaf vpn {
+                    type enumeration {
+                        enum vpn;
+                    }
+                }                  //vpn
+            }
+            list ADDRESS-FAMILY_L2VPN {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf evpn {
+                    type enumeration {
+                        enum evpn;
+                    }
+                }                  //evpn
+            }
+            list ADDRESS-FAMILY_VPNV4 {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf unicast {
+                    type enumeration {
+                        enum unicast;
+                    }
+                }                  //unicast
+            }
+            list ADDRESS-FAMILY_VPNV6 {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf unicast {
+                    type enumeration {
+                        enum unicast;
+                    }
+                }                  //unicast
+            }
+            list VNC_ADVERTISE-UN-METHOD {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf encap-attr {
+                    type enumeration {
+                        enum encap-attr;
+                    }
+                }                  //encap-attr
+            }
+            list VNC_REDISTRIBUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum bgp-direct;
+                        enum bgp-direct-to-nve-groups;
+                    }
+                }                  //<bgp-direct|bgp-direct-to-nve-groups> ['Redistribute from BGP directly', 'Redistribute from BGP without Zebra, only to configured NVE groups']
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['IPv4 routes', 'IPv6 routes']
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+                leaf PREFIX_LIST_NAME {
+                    type string;
+                }                  //NAME
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //NAME
+                leaf bgp-direct-to-nve-groups {
+                    type enumeration {
+                        enum bgp-direct-to-nve-groups;
+                    }
+                }                  //bgp-direct-to-nve-groups
+                leaf bgp-direct-to-nve-groups_view {
+                    type enumeration {
+                        enum bgp-direct-to-nve-groups_view;
+                    }
+                }                  //view
+                leaf BGP_VIEW_NAME {
+                    type string;
+                }                  //NAME
+                leaf lifetime {
+                    type enumeration {
+                        enum lifetime;
+                    }
+                }                  //lifetime
+                leaf LIFETIME_VALUE {
+                    type string;
+                }                  //LIFETIME
+                leaf infinite {
+                    type enumeration {
+                        enum infinite;
+                    }
+                }
+                leaf mode {
+                    type enumeration {
+                        enum mode;
+                    }
+                }                  //mode
+                leaf nve-group {
+                    type enumeration {
+                        enum nve-group;
+                    }
+                }                  //nve-group
+                leaf GROUP_NAME {
+                    type string;
+                }                  //NAME
+            }
+            list NO_BGP_BESTPATH {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf aigp {
+                    type enumeration {
+                        enum aigp;
+                    }
+                }                  //aigp
+                leaf compare-routerid {
+                    type enumeration {
+                        enum compare-routerid;
+                    }
+                }                  //compare-routerid
+            }
+            list NO_BGP_CONDITIONAL-ADVERTISEMENT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf timer {
+                    type enumeration {
+                        enum timer;
+                    }
+                }                  //timer
+                leaf PERIOD_BETWEEN_BGP_TABLE {
+                    type int32;
+                }                  //(5-240)
+            }
+            list NO_BGP_DEFAULT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum ipv4-unicast;
+                        enum ipv4-multicast;
+                        enum ipv4-vpn;
+                        enum ipv4-labeled-unicast;
+                        enum ipv4-flowspec;
+                        enum ipv6-unicast;
+                        enum ipv6-multicast;
+                        enum ipv6-vpn;
+                        enum ipv6-labeled-unicast;
+                        enum ipv6-flowspec;
+                        enum l2vpn-evpn;
+                    }
+                }                  //<ipv4-unicast|ipv4-multicast|ipv4-vpn|ipv4-labeled-unicast|ipv4-flowspec|ipv6-unicast|ipv6-multicast|ipv6-vpn|ipv6-labeled-unicast|ipv6-flowspec|l2vpn-evpn> ['Activate ipv4-unicast for a peer by default', 'Activate ipv4-multicast for a peer by default', 'Activate ipv4-vpn for a peer by default', 'Activate ipv4-labeled-unicast for a peer by default', 'Activate ipv4-flowspec for a peer by default', 'Activate ipv6-unicast for a peer by default', 'Activate ipv6-multicast for a peer by default', 'Activate ipv6-vpn for a peer by default', 'Activate ipv6-labeled-unicast for a peer by default', 'Activate ipv6-flowspec for a peer by default', 'Activate l2vpn-evpn for a peer by default']
+                leaf shutdown {
+                    type enumeration {
+                        enum shutdown;
+                    }
+                }                  //shutdown
+                leaf show-hostname {
+                    type enumeration {
+                        enum show-hostname;
+                    }
+                }                  //show-hostname
+                leaf show-nexthop-hostname {
+                    type enumeration {
+                        enum show-nexthop-hostname;
+                    }
+                }                  //show-nexthop-hostname
+            }
+            list NO_BGP_GRACEFUL-RESTART {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf notification {
+                    type enumeration {
+                        enum notification;
+                    }
+                }                  //notification
+                leaf disable-eor {
+                    type enumeration {
+                        enum disable-eor;
+                    }
+                }                  //disable-eor
+                leaf preserve-fw-state {
+                    type enumeration {
+                        enum preserve-fw-state;
+                    }
+                }                  //preserve-fw-state
+            }
+            list NO_BGP_CLIENT-TO-CLIENT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf reflection {
+                    type enumeration {
+                        enum reflection;
+                    }
+                }                  //reflection
+            }
+            list NO_BGP_CLUSTER-ID {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ROUTE-REFLECTOR_CLUSTER-ID_IN_IP {
+                    type union {
+                        type inet:ipv4-address;
+                        type int32;
+                    }
+                }                  //<A.B.C.D|(1-4294967295)>
+            }
+            list NO_BGP_CONFEDERATION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf peers {
+                    type enumeration {
+                        enum peers;
+                    }
+                }                  //peers
+                leaf-list AS_NUMBER {
+                    type int32;
+                }                  //(1-4294967295)...
+            }
+            list NO_BGP_DAMPENING {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf HALF-LIFE_TIME_FOR_THE {
+                    type int32;
+                }                  //(1-45)
+                leaf VALUE_TO_START_REUSING {
+                    type int32;
+                }                  //(1-20000)
+                leaf VALUE_TO_START_SUPPRESSING {
+                    type int32;
+                }                  //(1-50000)
+                leaf MAXIMUM_DURATION_TO_SUPPRESS {
+                    type int32;
+                }                  //(1-255)
+            }
+            list NO_BGP_LISTEN {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf range {
+                    type enumeration {
+                        enum range;
+                    }
+                }                  //range
+                leaf IPV4_PREFIX {
+                    type union {
+                        type inet:ipv4-prefix;
+                        type inet:ipv6-prefix;
+                    }
+                }                  //<A.B.C.D/M|X:X::X:X/M>
+                leaf peer-group {
+                    type enumeration {
+                        enum peer-group;
+                    }
+                }                  //peer-group
+                leaf PEER-GROUP_NAME {
+                    type string;
+                }                  //PGNAME
+            }
+            list NO_BGP_MINIMUM-HOLDTIME {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf SECONDS {
+                    type int32;
+                }                  //(1-65535)
+            }
+            list NO_BGP_NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf import-check {
+                    type enumeration {
+                        enum import-check;
+                    }
+                }                  //import-check
+            }
+            list NO_BGP_ROUTE-REFLECTOR {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf allow-outbound-policy {
+                    type enumeration {
+                        enum allow-outbound-policy;
+                    }
+                }                  //allow-outbound-policy
+            }
+            list NO_BGP_ROUTER-ID {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf MANUALLY_CONFIGURED_ROUTER_IDENTIFIER {
+                    type inet:ipv4-address;
+                }                  //A.B.C.D
+            }
+            list NO_BGP_SHUTDOWN {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf message {
+                    type enumeration {
+                        enum message;
+                    }
+                }                  //message
+                leaf-list MESSAGE {
+                    type string;
+                }                  //MSG...
+            }
+            list NO_BGP_TCP-KEEPALIVE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf TCP_KEEPALIVE_IDLE_TIME {
+                    type int32;
+                }                  //(1-65535)
+                leaf TCP_KEEPALIVE_INTERVAL {
+                    type int32;
+                }                  //(1-65535)
+                leaf TCP_KEEPALIVE_MAXIMUM_PROBES {
+                    type int32;
+                }                  //(1-30)
+            }
+            list NO_DISTANCE_BGP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf DISTANCE_FOR_ROUTES_EXTERNAL {
+                    type int32;
+                }                  //(1-255)
+                leaf DISTANCE_FOR_ROUTES_INTERNAL {
+                    type int32;
+                }                  //(1-255)
+                leaf DISTANCE_FOR_LOCAL_ROUTES {
+                    type int32;
+                }                  //(1-255)
+            }
+            list NO_TIMERS_BGP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf KEEPALIVE_INTERVAL {
+                    type int32;
+                }                  //(0-65535)
+                leaf HOLDTIME {
+                    type int32;
+                }                  //(0-65535)
+            }
+            list NO_VNC_REDISTRIBUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum bgp-direct;
+                        enum bgp-direct-to-nve-groups;
+                    }
+                }                  //<bgp-direct|bgp-direct-to-nve-groups> ['Redistribute from BGP directly', 'Redistribute from BGP without Zebra, only to configured NVE groups']
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['IPv4 routes', 'IPv6 routes']
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf nve-group {
+                    type enumeration {
+                        enum nve-group;
+                    }
+                }                  //nve-group
+            }
+            list BGP_BESTPATH_AS-PATH {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf confed {
+                    type enumeration {
+                        enum confed;
+                    }
+                }                  //confed
+                leaf ignore {
+                    type enumeration {
+                        enum ignore;
+                    }
+                }                  //ignore
+            }
+            list BGP_BESTPATH_PEER-TYPE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf multipath-relax {
+                    type enumeration {
+                        enum multipath-relax;
+                    }
+                }                  //multipath-relax
+            }
+            list BGP_MAX-MED_ADMINISTRATIVE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf MAX_MED_VALUE_TO {
+                    type int32;
+                }                  //(0-4294967295)
+            }
+            list SID_VPN_PER-VRF {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf SID_ALLOCATION_INDEX {
+                    type int32;
+                }                  //(1-1048575)
+                leaf auto {
+                    type enumeration {
+                        enum auto;
+                    }
+                }
+            }
+            list VNC_REDISTRIBUTE_RESOLVE-NVE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf roo-ec-local-admin {
+                    type enumeration {
+                        enum roo-ec-local-admin;
+                    }
+                }                  //roo-ec-local-admin
+                leaf FIELD_VALUE {
+                    type int32;
+                }                  //(0-65535)
+            }
+            list NO_BGP_BESTPATH_AS-PATH {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf confed {
+                    type enumeration {
+                        enum confed;
+                    }
+                }                  //confed
+                leaf ignore {
+                    type enumeration {
+                        enum ignore;
+                    }
+                }                  //ignore
+            }
+            list NO_BGP_BESTPATH_BANDWIDTH {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum ignore;
+                        enum skip-missing;
+                        enum default-weight-for-missing;
+                    }
+                }                  //<ignore|skip-missing|default-weight-for-missing> ['Ignore link bandwidth (i.e., do regular ECMP, not weighted)', 'Ignore paths without link bandwidth for ECMP (if other paths have it)', 'Assign a low default weight (value 1) to paths not having link bandwidth']
+            }
+            list NO_BGP_BESTPATH_PEER-TYPE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf multipath-relax {
+                    type enumeration {
+                        enum multipath-relax;
+                    }
+                }                  //multipath-relax
+            }
+            list NO_BGP_DEFAULT_LOCAL-PREFERENCE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf CONFIGURE_DEFAULT_LOCAL_PREFERENCE {
+                    type int32;
+                }                  //(0-4294967295)
+            }
+            list NO_BGP_DEFAULT_SUBGROUP-PKT-QUEUE-MAX {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf CONFIGURE_SUBGROUP_PACKET_QUEUE {
+                    type int32;
+                }                  //(20-100)
+            }
+            list NO_BGP_GRACEFUL-RESTART_RESTART-TIME {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf DELAY_VALUE {
+                    type int32;
+                }                  //(0-4095)
+            }
+            list NO_BGP_GRACEFUL-RESTART_RIB-STALE-TIME {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf DELAY_VALUE {
+                    type int32;
+                }                  //(1-3600)
+            }
+            list NO_BGP_GRACEFUL-RESTART_SELECT-DEFER-TIME {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf DELAY_VALUE {
+                    type int32;
+                }                  //(0-3600)
+            }
+            list NO_BGP_GRACEFUL-RESTART_STALEPATH-TIME {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf DELAY_VALUE {
+                    type int32;
+                }                  //(1-4095)
+            }
+            list NO_BGP_CONFEDERATION_IDENTIFIER {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf SET_ROUTING_DOMAIN_CONFEDERATION {
+                    type int32;
+                }                  //(1-4294967295)
+            }
+            list NO_BGP_LISTEN_LIMIT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf CONFIGURE_DYNAMIC_NEIGHBORS_LISTEN {
+                    type int32;
+                }                  //(1-65535)
+            }
+            list NO_BGP_LONG-LIVED-GRACEFUL-RESTART_STALE-TIME {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf STALE_TIME_VALUE {
+                    type int32;
+                }                  //(1-16777215)
+            }
+            list NO_BGP_MAX-MED_ADMINISTRATIVE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf MAX_MED_VALUE_TO {
+                    type int32;
+                }                  //(0-4294967295)
+            }
+            list NO_BGP_MAX-MED_ON-STARTUP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf TIME_PERIOD_FOR_MAX-MED {
+                    type int32;
+                }                  //(5-86400)
+                leaf MAX_MED_VALUE_TO {
+                    type int32;
+                }                  //(0-4294967295)
+            }
+            list BGP_BESTPATH_AS-PATH_MULTIPATH-RELAX {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf AS_SET_MODE {
+                    type enumeration {
+                        enum as-set;
+                        enum no-as-set;
+                    }
+                }                  //<as-set|no-as-set> ['Generate an AS_SET', 'Do not generate an AS_SET']
+            }
+            list BGP_BESTPATH_MED_CONFED {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf missing-as-worst {
+                    type enumeration {
+                        enum missing-as-worst;
+                    }
+                }                  //missing-as-worst
+            }
+            list BGP_BESTPATH_MED_MISSING-AS-WORST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf confed {
+                    type enumeration {
+                        enum confed;
+                    }
+                }                  //confed
+            }
+            list NO_BGP_BESTPATH_AS-PATH_MULTIPATH-RELAX {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf AS_SET_MODE {
+                    type enumeration {
+                        enum as-set;
+                        enum no-as-set;
+                    }
+                }                  //<as-set|no-as-set> ['Generate an AS_SET', 'Do not generate an AS_SET']
+            }
+            list NO_BGP_BESTPATH_MED_CONFED {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf missing-as-worst {
+                    type enumeration {
+                        enum missing-as-worst;
+                    }
+                }                  //missing-as-worst
+            }
+            list NO_BGP_BESTPATH_MED_MISSING-AS-WORST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf confed {
+                    type enumeration {
+                        enum confed;
+                    }
+                }                  //confed
+            }
+            list NO_SID_VPN_PER-VRF_EXPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf SID_ALLOCATION_INDEX {
+                    type int32;
+                }                  //(1-1048575)
+                leaf auto {
+                    type enumeration {
+                        enum auto;
+                    }
+                }
+            }
+        }
+        container BGP_IPV4_NODE {
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf neighbor {
+                    type enumeration {
+                        enum neighbor;
+                    }
+                }                  //neighbor
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                        type string;
+                    }
+                }                  //<A.B.C.D|X:X::X:X|WORD>
+                leaf advertise-map {
+                    type enumeration {
+                        enum advertise-map;
+                    }
+                }                  //advertise-map
+                leaf NAME_OF_ADVERTISE_MAP {
+                    type string;
+                }                  //RMAP_NAME
+                leaf ADVERTISE_OUTES_ONLY {
+                    type enumeration {
+                        enum exist-map;
+                        enum non-exist-map;
+                    }
+                }                  //<exist-map|non-exist-map> ['Advertise routes only if prefixes in exist-map are installed in BGP table', 'Advertise routes only if prefixes in non-exist-map are not installed in BGP table']
+                leaf NAME_OF_THE_EXIST {
+                    type string;
+                }                  //RMAP_NAME
+                leaf activate {
+                    type enumeration {
+                        enum activate;
+                    }
+                }                  //activate
+                leaf addpath-tx-all-paths {
+                    type enumeration {
+                        enum addpath-tx-all-paths;
+                    }
+                }                  //addpath-tx-all-paths
+                leaf addpath-tx-bestpath-per-AS {
+                    type enumeration {
+                        enum addpath-tx-bestpath-per-AS;
+                    }
+                }                  //addpath-tx-bestpath-per-AS
+                leaf allowas-in {
+                    type enumeration {
+                        enum allowas-in;
+                    }
+                }                  //allowas-in
+                leaf NUMBER_OF_OCCURRENCES_OF {
+                    type int32;
+                }                  //(1-10)
+                leaf origin {
+                    type enumeration {
+                        enum origin;
+                    }
+                }
+                leaf as-override {
+                    type enumeration {
+                        enum as-override;
+                    }
+                }                  //as-override
+                leaf attribute-unchanged {
+                    type enumeration {
+                        enum attribute-unchanged;
+                    }
+                }                  //attribute-unchanged
+                leaf attribute-unchanged_as-path {
+                    type enumeration {
+                        enum attribute-unchanged_as-path;
+                    }
+                }                  //as-path
+                leaf attribute-unchanged_next-hop {
+                    type enumeration {
+                        enum attribute-unchanged_next-hop;
+                    }
+                }                  //next-hop
+                leaf attribute-unchanged_med {
+                    type enumeration {
+                        enum attribute-unchanged_med;
+                    }
+                }                  //med
+                leaf default-originate {
+                    type enumeration {
+                        enum default-originate;
+                    }
+                }                  //default-originate
+                leaf default-originate_route-map {
+                    type enumeration {
+                        enum default-originate_route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE-MAP_NAME {
+                    type string;
+                }                  //RMAP_NAME
+                leaf disable-addpath-rx {
+                    type enumeration {
+                        enum disable-addpath-rx;
+                    }
+                }                  //disable-addpath-rx
+                leaf distribute-list {
+                    type enumeration {
+                        enum distribute-list;
+                    }
+                }                  //distribute-list
+                leaf IP_ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming updates', 'Filter outgoing updates']
+                leaf filter-list {
+                    type enumeration {
+                        enum filter-list;
+                    }
+                }                  //filter-list
+                leaf AS_PATH_ACCESS-LIST_NAME {
+                    type string;
+                }                  //AS_PATH_FILTER_NAME
+                leaf maximum-prefix {
+                    type enumeration {
+                        enum maximum-prefix;
+                    }
+                }                  //maximum-prefix
+                leaf next-hop-self {
+                    type enumeration {
+                        enum next-hop-self;
+                    }
+                }                  //next-hop-self
+                leaf next-hop-self_force {
+                    type enumeration {
+                        enum next-hop-self_force;
+                    }
+                }                  //force
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+                leaf NAME_OF_A_PREFIX {
+                    type string;
+                }                  //WORD
+                leaf remove-private-AS {
+                    type enumeration {
+                        enum remove-private-AS;
+                    }
+                }                  //remove-private-AS
+                leaf remove-private-AS_replace-AS {
+                    type enumeration {
+                        enum remove-private-AS_replace-AS;
+                    }
+                }                  //replace-AS
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf NAME_OF_ROUTE_MAP {
+                    type string;
+                }                  //RMAP_NAME
+                leaf route-reflector-client {
+                    type enumeration {
+                        enum route-reflector-client;
+                    }
+                }                  //route-reflector-client
+                leaf route-server-client {
+                    type enumeration {
+                        enum route-server-client;
+                    }
+                }                  //route-server-client
+                leaf send-community {
+                    type enumeration {
+                        enum send-community;
+                    }
+                }                  //send-community
+                leaf COMMUNITY_TYPE {
+                    type enumeration {
+                        enum both;
+                        enum all;
+                        enum extended;
+                        enum standard;
+                        enum large;
+                    }
+                }                  //<both|all|extended|standard|large> ['Send Standard and Extended Community attributes', 'Send Standard, Large and Extended Community attributes', 'Send Extended Community attributes', 'Send Standard Community attributes', 'Send Large Community attributes']
+                leaf soft-reconfiguration_inbound {
+                    type enumeration {
+                        enum soft-reconfiguration_inbound;
+                    }
+                }                  //inbound
+                leaf soo {
+                    type enumeration {
+                        enum soo;
+                    }
+                }                  //soo
+                leaf unsuppress-map {
+                    type enumeration {
+                        enum unsuppress-map;
+                    }
+                }                  //unsuppress-map
+                leaf weight {
+                    type enumeration {
+                        enum weight;
+                    }
+                }                  //weight
+                leaf capability_orf_prefix-list {
+                    type enumeration {
+                        enum capability_orf_prefix-list;
+                    }
+                }                  //prefix-list
+                leaf FILTER_CAPABILITY {
+                    type enumeration {
+                        enum both;
+                        enum send;
+                        enum receive;
+                    }
+                }                  //<both|send|receive> ['Capability to 4 and RECEIVE the ORF to/from this neighbor', 'Capability to RECEIVE the ORF from this neighbor', 'Capability to 4 the ORF to this neighbor']
+                leaf remove-private-AS_all {
+                    type enumeration {
+                        enum remove-private-AS_all;
+                    }
+                }                  //remove-private-AS_all
+                leaf remove-private-AS_all_replace-AS {
+                    type enumeration {
+                        enum remove-private-AS_all_replace-AS;
+                    }
+                }                  //replace-AS
+            }
+            list ROUTE-TARGET {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf vpn {
+                    type enumeration {
+                        enum vpn;
+                    }
+                }                  //vpn
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum import;
+                        enum export;
+                        enum both;
+                    }
+                }                  //<import|export|both> ['For routes leaked from vpn to current address-family: match any', 'For routes leaked from current address-family to vpn: set', 'both import: match any and export: set']
+                leaf-list ROUTER_TARGET {
+                    type string;
+                }                  //RTLIST...
+            }
+            list IMPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf vpn {
+                    type enumeration {
+                        enum vpn;
+                    }
+                }                  //vpn
+            }
+            list EXPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf vpn {
+                    type enumeration {
+                        enum vpn;
+                    }
+                }                  //vpn
+            }
+            list NEIGHBOR {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                        type string;
+                    }
+                }                  //<A.B.C.D|X:X::X:X|WORD>
+                leaf advertise-map {
+                    type enumeration {
+                        enum advertise-map;
+                    }
+                }                  //advertise-map
+                leaf NAME_OF_ADVERTISE_MAP {
+                    type string;
+                }                  //RMAP_NAME
+                leaf ADVERTISE_OUTES_ONLY {
+                    type enumeration {
+                        enum exist-map;
+                        enum non-exist-map;
+                    }
+                }                  //<exist-map|non-exist-map> ['Advertise routes only if prefixes in exist-map are installed in BGP table', 'Advertise routes only if prefixes in non-exist-map are not installed in BGP table']
+                leaf NAME_OF_THE_EXIST {
+                    type string;
+                }                  //RMAP_NAME
+                leaf activate {
+                    type enumeration {
+                        enum activate;
+                    }
+                }                  //activate
+                leaf addpath-tx-all-paths {
+                    type enumeration {
+                        enum addpath-tx-all-paths;
+                    }
+                }                  //addpath-tx-all-paths
+                leaf addpath-tx-bestpath-per-AS {
+                    type enumeration {
+                        enum addpath-tx-bestpath-per-AS;
+                    }
+                }                  //addpath-tx-bestpath-per-AS
+                leaf allowas-in {
+                    type enumeration {
+                        enum allowas-in;
+                    }
+                }                  //allowas-in
+                leaf NUMBER_OF_OCCURRENCES_OF {
+                    type int32;
+                }                  //(1-10)
+                leaf origin {
+                    type enumeration {
+                        enum origin;
+                    }
+                }
+                leaf as-override {
+                    type enumeration {
+                        enum as-override;
+                    }
+                }                  //as-override
+                leaf attribute-unchanged {
+                    type enumeration {
+                        enum attribute-unchanged;
+                    }
+                }                  //attribute-unchanged
+                leaf attribute-unchanged_as-path {
+                    type enumeration {
+                        enum attribute-unchanged_as-path;
+                    }
+                }                  //as-path
+                leaf attribute-unchanged_next-hop {
+                    type enumeration {
+                        enum attribute-unchanged_next-hop;
+                    }
+                }                  //next-hop
+                leaf attribute-unchanged_med {
+                    type enumeration {
+                        enum attribute-unchanged_med;
+                    }
+                }                  //med
+                leaf default-originate {
+                    type enumeration {
+                        enum default-originate;
+                    }
+                }                  //default-originate
+                leaf default-originate_route-map {
+                    type enumeration {
+                        enum default-originate_route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE-MAP_NAME {
+                    type string;
+                }                  //RMAP_NAME
+                leaf disable-addpath-rx {
+                    type enumeration {
+                        enum disable-addpath-rx;
+                    }
+                }                  //disable-addpath-rx
+                leaf distribute-list {
+                    type enumeration {
+                        enum distribute-list;
+                    }
+                }                  //distribute-list
+                leaf IP_ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming updates', 'Filter outgoing updates']
+                leaf filter-list {
+                    type enumeration {
+                        enum filter-list;
+                    }
+                }                  //filter-list
+                leaf AS_PATH_ACCESS-LIST_NAME {
+                    type string;
+                }                  //AS_PATH_FILTER_NAME
+                leaf maximum-prefix {
+                    type enumeration {
+                        enum maximum-prefix;
+                    }
+                }                  //maximum-prefix
+                leaf MAXIMUM_NO_OF_PREFIX {
+                    type int32;
+                }                  //(1-4294967295)
+                leaf THRESHOLD_VALUE_AT_WHICH {
+                    type int32;
+                }                  //(1-100)
+                leaf force {
+                    type enumeration {
+                        enum force;
+                    }
+                }                  //force
+                leaf restart {
+                    type enumeration {
+                        enum restart;
+                    }
+                }                  //restart
+                leaf RESTART_INTERVAL_IN_MINUTES {
+                    type int32;
+                }                  //(1-65535)
+                leaf warning-only {
+                    type enumeration {
+                        enum warning-only;
+                    }
+                }                  //warning-only
+                leaf warning-only_force {
+                    type enumeration {
+                        enum warning-only_force;
+                    }
+                }                  //force
+                leaf next-hop-self {
+                    type enumeration {
+                        enum next-hop-self;
+                    }
+                }                  //next-hop-self
+                leaf next-hop-self_force {
+                    type enumeration {
+                        enum next-hop-self_force;
+                    }
+                }                  //force
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+                leaf NAME_OF_A_PREFIX {
+                    type string;
+                }                  //WORD
+                leaf remove-private-AS {
+                    type enumeration {
+                        enum remove-private-AS;
+                    }
+                }                  //remove-private-AS
+                leaf remove-private-AS_replace-AS {
+                    type enumeration {
+                        enum remove-private-AS_replace-AS;
+                    }
+                }                  //replace-AS
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf NAME_OF_ROUTE_MAP {
+                    type string;
+                }                  //RMAP_NAME
+                leaf route-reflector-client {
+                    type enumeration {
+                        enum route-reflector-client;
+                    }
+                }                  //route-reflector-client
+                leaf route-server-client {
+                    type enumeration {
+                        enum route-server-client;
+                    }
+                }                  //route-server-client
+                leaf send-community {
+                    type enumeration {
+                        enum send-community;
+                    }
+                }                  //send-community
+                leaf COMMUNITY_TYPE {
+                    type enumeration {
+                        enum both;
+                        enum all;
+                        enum extended;
+                        enum standard;
+                        enum large;
+                    }
+                }                  //<both|all|extended|standard|large> ['Send Standard and Extended Community attributes', 'Send Standard, Large and Extended Community attributes', 'Send Extended Community attributes', 'Send Standard Community attributes', 'Send Large Community attributes']
+                leaf soft-reconfiguration_inbound {
+                    type enumeration {
+                        enum soft-reconfiguration_inbound;
+                    }
+                }                  //inbound
+                leaf soo {
+                    type enumeration {
+                        enum soo;
+                    }
+                }                  //soo
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+                leaf unsuppress-map {
+                    type enumeration {
+                        enum unsuppress-map;
+                    }
+                }                  //unsuppress-map
+                leaf weight {
+                    type enumeration {
+                        enum weight;
+                    }
+                }                  //weight
+                leaf DEFAULT_WEIGHT {
+                    type int32;
+                }                  //(0-65535)
+                leaf capability_orf_prefix-list {
+                    type enumeration {
+                        enum capability_orf_prefix-list;
+                    }
+                }                  //prefix-list
+                leaf FILTER_CAPABILITY {
+                    type enumeration {
+                        enum both;
+                        enum send;
+                        enum receive;
+                    }
+                }                  //<both|send|receive> ['Capability to 4 and RECEIVE the ORF to/from this neighbor', 'Capability to RECEIVE the ORF from this neighbor', 'Capability to 4 the ORF to this neighbor']
+                leaf remove-private-AS_all {
+                    type enumeration {
+                        enum remove-private-AS_all;
+                    }
+                }                  //remove-private-AS_all
+                leaf remove-private-AS_all_replace-AS {
+                    type enumeration {
+                        enum remove-private-AS_all_replace-AS;
+                    }
+                }                  //replace-AS
+            }
+            list ROUTE-MAP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf vpn {
+                    type enumeration {
+                        enum vpn;
+                    }
+                }                  //vpn
+                leaf FILTER_DIRECTION {
+                    type enumeration {
+                        enum import;
+                        enum export;
+                    }
+                }                  //<import|export> ['For routes leaked from vpn to current address-family', 'For routes leaked from current address-family to vpn']
+                leaf NAME_OF_ROUTE-MAP {
+                    type string;
+                }                  //RMAP
+            }
+            list EXIT-ADDRESS-FAMILY {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list MAXIMUM-PATHS {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf NUMBER_OF_PATHS {
+                    type string;
+                }                  //CMD_RANGE_STR
+                leaf ibgp {
+                    type enumeration {
+                        enum ibgp;
+                    }
+                }                  //ibgp
+                leaf equal-cluster-length {
+                    type enumeration {
+                        enum equal-cluster-length;
+                    }
+                }                  //equal-cluster-length
+            }
+            list REDISTRIBUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ROUTE_SOURCE {
+                    type enumeration {
+                        enum ospf;
+                        enum table;
+                    }
+                }                  //<ospf|table> ['Open Shortest Path First (OSPFv2)', 'Non-main Kernel Routing Table']
+                leaf INSTANCE_IDTABLE_ID {
+                    type int32;
+                }                  //(1-65535)
+                leaf metric {
+                    type enumeration {
+                        enum metric;
+                    }
+                }                  //metric
+                leaf DEFAULT_METRIC {
+                    type int32;
+                }                  //(0-4294967295)
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf POINTER_TO_ROUTE-MAP_ENTRIES {
+                    type string;
+                }                  //RMAP_NAME
+                leaf FRR_IP_REDIST_HELP_STR_BGPD {
+                    type string;
+                }                  //FRR_IP_REDIST_STR_BGPD
+            }
+            list NO_ROUTE-TARGET {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf vpn {
+                    type enumeration {
+                        enum vpn;
+                    }
+                }                  //vpn
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum import;
+                        enum export;
+                        enum both;
+                    }
+                }                  //<import|export|both> ['For routes leaked from vpn to current address-family: match any', 'For routes leaked from current address-family to vpn: set', 'both import: match any and export: set']
+                leaf-list ROUTER_TARGET {
+                    type string;
+                }                  //RTLIST...
+            }
+            list NO_IMPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf vpn {
+                    type enumeration {
+                        enum vpn;
+                    }
+                }                  //vpn
+            }
+            list NO_EXPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf vpn {
+                    type enumeration {
+                        enum vpn;
+                    }
+                }                  //vpn
+            }
+            list NO_ROUTE-MAP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf vpn {
+                    type enumeration {
+                        enum vpn;
+                    }
+                }                  //vpn
+                leaf FILTER_DIRECTION {
+                    type enumeration {
+                        enum import;
+                        enum export;
+                    }
+                }                  //<import|export> ['For routes leaked from vpn to current address-family', 'For routes leaked from current address-family to vpn']
+                leaf NAME_OF_ROUTE-MAP {
+                    type string;
+                }                  //RMAP
+            }
+            list NO_MAXIMUM-PATHS {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf NUMBER_OF_PATHS {
+                    type string;
+                }                  //CMD_RANGE_STR
+            }
+            list NO_REDISTRIBUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ROUTE_SOURCE {
+                    type enumeration {
+                        enum ospf;
+                        enum table;
+                    }
+                }                  //<ospf|table> ['Open Shortest Path First (OSPFv2)', 'Non-main Kernel Routing Table']
+                leaf INSTANCE_IDTABLE_ID {
+                    type int32;
+                }                  //(1-65535)
+                leaf metric {
+                    type enumeration {
+                        enum metric;
+                    }
+                }                  //metric
+                leaf DEFAULT_METRIC {
+                    type int32;
+                }                  //(0-4294967295)
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf POINTER_TO_ROUTE-MAP_ENTRIES {
+                    type string;
+                }                  //RMAP_NAME
+                leaf FRR_IP_REDIST_HELP_STR_BGPD {
+                    type string;
+                }                  //FRR_IP_REDIST_STR_BGPD
+            }
+            list IMPORT_VRF {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf THE_NAME_OF_THE {
+                    type string;
+                }                  //VIEWVRFNAME
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf NAME_OF_ROUTE-MAP {
+                    type string;
+                }                  //RMAP
+            }
+            list LABEL_VPN {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf LABEL_VALUE {
+                    type int32;
+                }                  //(0-1048575)
+                leaf auto {
+                    type enumeration {
+                        enum auto;
+                    }
+                }
+            }
+            list RD_VPN {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+            }
+            list SID_VPN {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf SID_ALLOCATION_INDEX {
+                    type int32;
+                }                  //(1-1048575)
+                leaf auto {
+                    type enumeration {
+                        enum auto;
+                    }
+                }
+            }
+            list NO_IMPORT_VRF {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf THE_NAME_OF_THE {
+                    type string;
+                }                  //VIEWVRFNAME
+            }
+            list NO_SID_VPN {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf SID_ALLOCATION_INDEX {
+                    type int32;
+                }                  //(1-1048575)
+                leaf auto {
+                    type enumeration {
+                        enum auto;
+                    }
+                }
+            }
+            list NO_MAXIMUM-PATHS_IBGP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf NUMBER_OF_PATHS {
+                    type string;
+                }                  //CMD_RANGE_STR
+                leaf equal-cluster-length {
+                    type enumeration {
+                        enum equal-cluster-length;
+                    }
+                }                  //equal-cluster-length
+            }
+            list NEXTHOP_VPN_EXPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                    }
+                }                  //<A.B.C.D|X:X::X:X>
+            }
+            list NO_IMPORT_VRF_ROUTE-MAP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf NAME_OF_ROUTE-MAP {
+                    type string;
+                }                  //RMAP
+            }
+            list NO_LABEL_VPN_EXPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf LABEL_VALUE {
+                    type int32;
+                }                  //(0-1048575)
+                leaf auto {
+                    type enumeration {
+                        enum auto;
+                    }
+                }
+            }
+            list NO_NEXTHOP_VPN_EXPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                    }
+                }                  //<A.B.C.D|X:X::X:X>
+            }
+            list NO_RD_VPN_EXPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+            }
+        }
+        container BGP_EVPN_NODE {
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf advertise-svi-ip {
+                    type enumeration {
+                        enum advertise-svi-ip;
+                    }
+                }                  //advertise-svi-ip
+                leaf disable-ead-evi-rx {
+                    type enumeration {
+                        enum disable-ead-evi-rx;
+                    }
+                }                  //disable-ead-evi-rx
+                leaf disable-ead-evi-tx {
+                    type enumeration {
+                        enum disable-ead-evi-tx;
+                    }
+                }                  //disable-ead-evi-tx
+                leaf enable-resolve-overlay-index {
+                    type enumeration {
+                        enum enable-resolve-overlay-index;
+                    }
+                }                  //enable-resolve-overlay-index
+                leaf flooding {
+                    type enumeration {
+                        enum flooding;
+                    }
+                }                  //flooding
+                leaf BUM_FLOODING_MODE {
+                    type enumeration {
+                        enum disable;
+                        enum head-end-replication;
+                    }
+                }                  //<disable|head-end-replication> ['Do not flood any BUM packets', 'Flood BUM packets using head-end replication']
+                leaf use-es-l3nhg {
+                    type enumeration {
+                        enum use-es-l3nhg;
+                    }
+                }                  //use-es-l3nhg
+                leaf advertise {
+                    type enumeration {
+                        enum advertise;
+                    }
+                }                  //advertise
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['Address Family', 'Address Family']
+                leaf ADDRESS_FAMILY_MODIFIER {
+                    type enumeration {
+                        enum unicast;
+                        enum multicast;
+                        enum vpn;
+                    }
+                }                  //<unicast|multicast|vpn> ['Address Family modifier', 'Address Family modifier', 'Address Family modifier']
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf NAME_OF_THE_ROUTE {
+                    type string;
+                }                  //WORD
+                leaf advertise-all-vni {
+                    type enumeration {
+                        enum advertise-all-vni;
+                    }
+                }                  //advertise-all-vni
+                leaf advertise-default-gw {
+                    type enumeration {
+                        enum advertise-default-gw;
+                    }
+                }                  //advertise-default-gw
+                leaf default-originate {
+                    type enumeration {
+                        enum default-originate;
+                    }
+                }                  //default-originate
+                leaf network {
+                    type enumeration {
+                        enum network;
+                    }
+                }                  //network
+                leaf IPV4_PREFIX {
+                    type union {
+                        type inet:ipv4-prefix;
+                        type inet:ipv6-prefix;
+                    }
+                }                  //<A.B.C.D/M|X:X::X:X/M>
+                leaf rd {
+                    type enumeration {
+                        enum rd;
+                    }
+                }                  //rd
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+                leaf ethtag {
+                    type enumeration {
+                        enum ethtag;
+                    }
+                }                  //ethtag
+                leaf ETHERNET_TAG_VALUE {
+                    type string;
+                }                  //WORD
+                leaf label {
+                    type enumeration {
+                        enum label;
+                    }
+                }                  //label
+                leaf LABEL_VALUE {
+                    type string;
+                }                  //WORD
+                leaf esi {
+                    type enumeration {
+                        enum esi;
+                    }
+                }                  //esi
+                leaf ESI_VALUE {
+                    type string;
+                }                  //WORD
+                leaf gwip {
+                    type enumeration {
+                        enum gwip;
+                    }
+                }                  //gwip
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                    }
+                }                  //<A.B.C.D|X:X::X:X>
+                leaf route-target {
+                    type enumeration {
+                        enum route-target;
+                    }
+                }                  //route-target
+                leaf ROUTE_DIRECTION {
+                    type enumeration {
+                        enum both;
+                        enum import;
+                        enum export;
+                    }
+                }                  //<both|import|export> ['import and export', 'import', 'export']
+                leaf-list ROUTER_TARGET {
+                    type string;
+                }                  //RTLIST...
+                leaf auto {
+                    type enumeration {
+                        enum auto;
+                    }
+                }                  //auto
+                leaf vni {
+                    type enumeration {
+                        enum vni;
+                    }
+                }                  //vni
+                leaf VNI_NUMBER {
+                    type int32;
+                }                  //(1-16777215)
+            }
+            list ADVERTISE-PIP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ip {
+                    type enumeration {
+                        enum ip;
+                    }
+                }                  //ip
+                leaf IP_ADDRESS {
+                    type inet:ipv4-address;
+                }                  //A.B.C.D
+                leaf mac {
+                    type enumeration {
+                        enum mac;
+                    }
+                }                  //mac
+                leaf MAC_ADDRESS {
+                    type union {
+                        type string;
+                        type string;
+                    }
+                }                  //<X:X:X:X:X:X|X:X:X:X:X:X/M>
+            }
+            list ADVERTISE-SVI-IP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list DISABLE-EAD-EVI-RX {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list DISABLE-EAD-EVI-TX {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list EAD-ES-FRAG {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf evi-limit {
+                    type enumeration {
+                        enum evi-limit;
+                    }
+                }                  //evi-limit
+                leaf LIMIT {
+                    type int32;
+                }                  //(1-1000)
+            }
+            list ENABLE-RESOLVE-OVERLAY-INDEX {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list FLOODING {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf BUM_FLOODING_MODE {
+                    type enumeration {
+                        enum disable;
+                        enum head-end-replication;
+                    }
+                }                  //<disable|head-end-replication> ['Do not flood any BUM packets', 'Flood BUM packets using head-end replication']
+            }
+            list USE-ES-L3NHG {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list ADVERTISE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['Address Family', 'Address Family']
+                leaf ADDRESS_FAMILY_MODIFIER {
+                    type enumeration {
+                        enum unicast;
+                        enum multicast;
+                        enum vpn;
+                    }
+                }                  //<unicast|multicast|vpn> ['Address Family modifier', 'Address Family modifier', 'Address Family modifier']
+                leaf gateway-ip {
+                    type enumeration {
+                        enum gateway-ip;
+                    }
+                }                  //gateway-ip
+                leaf gateway-ip_route-map {
+                    type enumeration {
+                        enum gateway-ip_route-map;
+                    }
+                }                  //route-map
+                leaf NAME_OF_THE_ROUTE {
+                    type string;
+                }                  //RMAP_NAME
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+            }
+            list ADVERTISE-ALL-VNI {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list ADVERTISE-DEFAULT-GW {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list AUTORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf rfc8365-compatible {
+                    type enumeration {
+                        enum rfc8365-compatible;
+                    }
+                }                  //rfc8365-compatible
+            }
+            list DEFAULT-ORIGINATE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['ipv4 address family', 'ipv6 address family']
+            }
+            list DUP-ADDR-DETECTION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf max-moves {
+                    type enumeration {
+                        enum max-moves;
+                    }
+                }                  //max-moves
+                leaf NUM_OF_MAX_ALLOWED {
+                    type int32;
+                }                  //(2-1000)
+                leaf time {
+                    type enumeration {
+                        enum time;
+                    }
+                }                  //time
+                leaf TIME_IN_SECONDS_DEFAULT {
+                    type int32;
+                }                  //(2-1800)
+                leaf freeze {
+                    type enumeration {
+                        enum freeze;
+                    }
+                }                  //freeze
+                leaf DUPLICATE_ADDRESS_DETECTION_FREEZE {
+                    type int32;
+                }                  //(30-3600)
+                leaf permanent {
+                    type enumeration {
+                        enum permanent;
+                    }
+                }
+            }
+            list EAD-ES-ROUTE-TARGET {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf ROUTER_TARGET {
+                    type string;
+                }                  //RT
+            }
+            list NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IPV4_PREFIX {
+                    type union {
+                        type inet:ipv4-prefix;
+                        type inet:ipv6-prefix;
+                    }
+                }                  //<A.B.C.D/M|X:X::X:X/M>
+                leaf rd {
+                    type enumeration {
+                        enum rd;
+                    }
+                }                  //rd
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+                leaf ethtag {
+                    type enumeration {
+                        enum ethtag;
+                    }
+                }                  //ethtag
+                leaf ETHERNET_TAG_VALUE {
+                    type string;
+                }                  //WORD
+                leaf label {
+                    type enumeration {
+                        enum label;
+                    }
+                }                  //label
+                leaf LABEL_VALUE {
+                    type string;
+                }                  //WORD
+                leaf esi {
+                    type enumeration {
+                        enum esi;
+                    }
+                }                  //esi
+                leaf ESI_VALUE {
+                    type string;
+                }                  //WORD
+                leaf gwip {
+                    type enumeration {
+                        enum gwip;
+                    }
+                }                  //gwip
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                    }
+                }                  //<A.B.C.D|X:X::X:X>
+                leaf routermac {
+                    type enumeration {
+                        enum routermac;
+                    }
+                }                  //routermac
+                leaf ROUTER_MAC_ADDRESS_VALUE {
+                    type string;
+                }                  //WORD
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf NAME_OF_THE_ROUTE {
+                    type string;
+                }                  //RMAP_NAME
+            }
+            list RD {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+            }
+            list ROUTE-TARGET {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ROUTE_DIRECTION {
+                    type enumeration {
+                        enum both;
+                        enum import;
+                        enum export;
+                    }
+                }                  //<both|import|export> ['import and export', 'import', 'export']
+                leaf-list ROUTER_TARGET {
+                    type string;
+                }                  //RTLIST...
+                leaf auto {
+                    type enumeration {
+                        enum auto;
+                    }
+                }                  //auto
+            }
+            list VNI {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf VNI_NUMBER {
+                    type int32;
+                }                  //(1-16777215)
+            }
+            list NO_ADVERTISE-PIP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ip {
+                    type enumeration {
+                        enum ip;
+                    }
+                }                  //ip
+                leaf IP_ADDRESS {
+                    type inet:ipv4-address;
+                }                  //A.B.C.D
+                leaf mac {
+                    type enumeration {
+                        enum mac;
+                    }
+                }                  //mac
+                leaf MAC_ADDRESS {
+                    type union {
+                        type string;
+                        type string;
+                    }
+                }                  //<X:X:X:X:X:X|X:X:X:X:X:X/M>
+            }
+            list NO_EAD-ES-FRAG {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf evi-limit {
+                    type enumeration {
+                        enum evi-limit;
+                    }
+                }                  //evi-limit
+                leaf LIMIT {
+                    type int32;
+                }                  //(1-1000)
+            }
+            list NO_AUTORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf rfc8365-compatible {
+                    type enumeration {
+                        enum rfc8365-compatible;
+                    }
+                }                  //rfc8365-compatible
+            }
+            list NO_DUP-ADDR-DETECTION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf max-moves {
+                    type enumeration {
+                        enum max-moves;
+                    }
+                }                  //max-moves
+                leaf NUM_OF_MAX_ALLOWED {
+                    type int32;
+                }                  //(2-1000)
+                leaf time {
+                    type enumeration {
+                        enum time;
+                    }
+                }                  //time
+                leaf TIME_IN_SECONDS_DEFAULT {
+                    type int32;
+                }                  //(2-1800)
+                leaf freeze {
+                    type enumeration {
+                        enum freeze;
+                    }
+                }                  //freeze
+                leaf DUPLICATE_ADDRESS_DETECTION_FREEZE {
+                    type int32;
+                }                  //(30-3600)
+                leaf permanent {
+                    type enumeration {
+                        enum permanent;
+                    }
+                }
+            }
+            list NO_EAD-ES-ROUTE-TARGET {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf ROUTER_TARGET {
+                    type string;
+                }                  //RT
+            }
+        }
+        container BGP_IPV6_NODE {
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf aggregate-address {
+                    type enumeration {
+                        enum aggregate-address;
+                    }
+                }                  //aggregate-address
+                leaf AGGREGATE_PREFIX {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+                leaf as-set {
+                    type enumeration {
+                        enum as-set;
+                    }
+                }                  //as-set
+                leaf summary-only {
+                    type enumeration {
+                        enum summary-only;
+                    }
+                }                  //summary-only
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //RMAP_NAME
+                leaf origin {
+                    type enumeration {
+                        enum origin;
+                    }
+                }                  //origin
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum egp;
+                        enum igp;
+                        enum incomplete;
+                    }
+                }                  //<egp|igp|incomplete> ['Remote EGP', 'Local IGP', 'Unknown heritage']
+                leaf matching-MED-only {
+                    type enumeration {
+                        enum matching-MED-only;
+                    }
+                }                  //matching-MED-only
+                leaf suppress-map {
+                    type enumeration {
+                        enum suppress-map;
+                    }
+                }                  //suppress-map
+                leaf ROUTE_MAP_WITH_THE {
+                    type string;
+                }                  //RMAP_NAME
+                leaf network {
+                    type enumeration {
+                        enum network;
+                    }
+                }                  //network
+                leaf IPV6_PREFIX {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+                leaf label-index {
+                    type enumeration {
+                        enum label-index;
+                    }
+                }                  //label-index
+                leaf LABEL_INDEX_VALUE {
+                    type int32;
+                }                  //(0-1048560)
+                leaf distance {
+                    type enumeration {
+                        enum distance;
+                    }
+                }                  //distance
+                leaf ADMINISTRATIVE_DISTANCE {
+                    type int32;
+                }                  //(1-255)
+                leaf IP_SOURCE_PREFIX {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+                leaf ACCESS_LIST_NAME {
+                    type string;
+                }                  //WORD
+                leaf neighbor {
+                    type enumeration {
+                        enum neighbor;
+                    }
+                }                  //neighbor
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                        type string;
+                    }
+                }                  //<A.B.C.D|X:X::X:X|WORD>
+                leaf nexthop-local_unchanged {
+                    type enumeration {
+                        enum nexthop-local_unchanged;
+                    }
+                }                  //unchanged
+                leaf redistribute {
+                    type enumeration {
+                        enum redistribute;
+                    }
+                }                  //redistribute
+                leaf FRR_IP6_REDIST_HELP_STR_BGPD {
+                    type string;
+                }                  //FRR_IP6_REDIST_STR_BGPD
+                leaf metric {
+                    type enumeration {
+                        enum metric;
+                    }
+                }                  //metric
+                leaf DEFAULT_METRIC {
+                    type int32;
+                }                  //(0-4294967295)
+            }
+            list AGGREGATE-ADDRESS {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf AGGREGATE_PREFIX {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+                leaf as-set {
+                    type enumeration {
+                        enum as-set;
+                    }
+                }                  //as-set
+                leaf summary-only {
+                    type enumeration {
+                        enum summary-only;
+                    }
+                }                  //summary-only
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //RMAP_NAME
+                leaf origin {
+                    type enumeration {
+                        enum origin;
+                    }
+                }                  //origin
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum egp;
+                        enum igp;
+                        enum incomplete;
+                    }
+                }                  //<egp|igp|incomplete> ['Remote EGP', 'Local IGP', 'Unknown heritage']
+                leaf matching-MED-only {
+                    type enumeration {
+                        enum matching-MED-only;
+                    }
+                }                  //matching-MED-only
+                leaf suppress-map {
+                    type enumeration {
+                        enum suppress-map;
+                    }
+                }                  //suppress-map
+                leaf ROUTE_MAP_WITH_THE {
+                    type string;
+                }                  //RMAP_NAME
+            }
+            list NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IPV6_PREFIX {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf NAME_OF_THE_ROUTE {
+                    type string;
+                }                  //RMAP_NAME
+                leaf label-index {
+                    type enumeration {
+                        enum label-index;
+                    }
+                }                  //label-index
+                leaf LABEL_INDEX_VALUE {
+                    type int32;
+                }                  //(0-1048560)
+            }
+            list DISTANCE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ADMINISTRATIVE_DISTANCE {
+                    type int32;
+                }                  //(1-255)
+                leaf IP_SOURCE_PREFIX {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+                leaf ACCESS_LIST_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list NEIGHBOR {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                        type string;
+                    }
+                }                  //<A.B.C.D|X:X::X:X|WORD>
+                leaf nexthop-local_unchanged {
+                    type enumeration {
+                        enum nexthop-local_unchanged;
+                    }
+                }                  //unchanged
+            }
+            list REDISTRIBUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf FRR_IP6_REDIST_HELP_STR_BGPD {
+                    type string;
+                }                  //FRR_IP6_REDIST_STR_BGPD
+                leaf metric {
+                    type enumeration {
+                        enum metric;
+                    }
+                }                  //metric
+                leaf DEFAULT_METRIC {
+                    type int32;
+                }                  //(0-4294967295)
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf POINTER_TO_ROUTE-MAP_ENTRIES {
+                    type string;
+                }                  //RMAP_NAME
+            }
+        }
+        container BGP_SRV6_NODE {
+            list EXIT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list LOCATOR {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf SPECIFY_SRV6_LOCATOR {
+                    type string;
+                }                  //NAME
+            }
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf locator {
+                    type enumeration {
+                        enum locator;
+                    }
+                }                  //locator
+                leaf SPECIFY_SRV6_LOCATOR {
+                    type string;
+                }                  //NAME
+            }
+            list QUIT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+        }
+        container BGP_VPNV4_NODE {
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf neighbor {
+                    type enumeration {
+                        enum neighbor;
+                    }
+                }                  //neighbor
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                        type string;
+                    }
+                }                  //<A.B.C.D|X:X::X:X|WORD>
+                leaf accept-own {
+                    type enumeration {
+                        enum accept-own;
+                    }
+                }                  //accept-own
+                leaf network {
+                    type enumeration {
+                        enum network;
+                    }
+                }                  //network
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+                leaf rd {
+                    type enumeration {
+                        enum rd;
+                    }
+                }                  //rd
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum tag;
+                        enum label;
+                    }
+                }                  //<tag|label> ['VPN 1 label (tag)', 'VPN 1 label (tag)']
+                leaf LABEL_VALUE {
+                    type int32;
+                }                  //(0-1048575)
+            }
+            list NEIGHBOR {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                        type string;
+                    }
+                }                  //<A.B.C.D|X:X::X:X|WORD>
+                leaf accept-own {
+                    type enumeration {
+                        enum accept-own;
+                    }
+                }                  //accept-own
+            }
+            list NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IPV4_PREFIX {
+                    type inet:ipv4-prefix;
+                }                  //A.B.C.D/M
+                leaf rd {
+                    type enumeration {
+                        enum rd;
+                    }
+                }                  //rd
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum tag;
+                        enum label;
+                    }
+                }                  //<tag|label> ['VPN 1 label (tag)', 'VPN 1 label (tag)']
+                leaf LABEL_VALUE {
+                    type int32;
+                }                  //(0-1048575)
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //RMAP_NAME
+            }
+            list BGP_RETAIN_ROUTE-TARGET {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf all {
+                    type enumeration {
+                        enum all;
+                    }
+                }                  //all
+            }
+            list NO_BGP_RETAIN_ROUTE-TARGET {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf all {
+                    type enumeration {
+                        enum all;
+                    }
+                }                  //all
+            }
+        }
+        container BGP_VPNV6_NODE {
+            list NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IPV6_PREFIX {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+                leaf rd {
+                    type enumeration {
+                        enum rd;
+                    }
+                }                  //rd
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum tag;
+                        enum label;
+                    }
+                }                  //<tag|label> ['VPN 1 label (tag)', 'VPN 1 label (tag)']
+                leaf LABEL_VALUE {
+                    type int32;
+                }                  //(0-1048575)
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //RMAP_NAME
+            }
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf network {
+                    type enumeration {
+                        enum network;
+                    }
+                }                  //network
+                leaf IPV6_PREFIX {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+                leaf rd {
+                    type enumeration {
+                        enum rd;
+                    }
+                }                  //rd
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum tag;
+                        enum label;
+                    }
+                }                  //<tag|label> ['VPN 1 label (tag)', 'VPN 1 label (tag)']
+                leaf LABEL_VALUE {
+                    type int32;
+                }                  //(0-1048575)
+            }
+        }
+        container BGP_EVPN_VNI_NODE {
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf advertise-svi-ip {
+                    type enumeration {
+                        enum advertise-svi-ip;
+                    }
+                }                  //advertise-svi-ip
+                leaf advertise-default-gw {
+                    type enumeration {
+                        enum advertise-default-gw;
+                    }
+                }                  //advertise-default-gw
+                leaf advertise-subnet {
+                    type enumeration {
+                        enum advertise-subnet;
+                    }
+                }                  //advertise-subnet
+            }
+            list ADVERTISE-SVI-IP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list ADVERTISE-DEFAULT-GW {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list ADVERTISE-SUBNET {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list EXIT-VNI {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list RD {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+            }
+            list ROUTE-TARGET {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ROUTE_DIRECTION {
+                    type enumeration {
+                        enum both;
+                        enum import;
+                        enum export;
+                    }
+                }                  //<both|import|export> ['import and export', 'import', 'export']
+                leaf ROUTER_TARGET {
+                    type string;
+                }                  //RT
+            }
+            list NO_RD {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+            }
+            list NO_ROUTE-TARGET {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ROUTE_DIRECTION {
+                    type enumeration {
+                        enum both;
+                        enum import;
+                        enum export;
+                    }
+                }                  //<both|import|export> ['import and export', 'import', 'export']
+                leaf ROUTER_TARGET {
+                    type string;
+                }                  //RT
+                leaf FILTER_DIRECTION {
+                    type enumeration {
+                        enum import;
+                        enum export;
+                    }
+                }                  //<import|export> ['import', 'export']
+            }
+        }
+        container BGP_FLOWSPECV4_NODE {
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf local-install {
+                    type enumeration {
+                        enum local-install;
+                    }
+                }                  //local-install
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //INTERFACE
+            }
+            list LOCAL-INSTALL {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //INTERFACE
+            }
+        }
+        container BGP_VRF_POLICY_NODE {
+            list EXIT-VRF-POLICY {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list EXPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['IPv4 routes', 'IPv6 routes']
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+                leaf PREFIX_LIST_NAME {
+                    type string;
+                }                  //NAME
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //NAME
+            }
+            list LABEL {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf LABEL_VALUE {
+                    type int32;
+                }                  //(0-1048575)
+            }
+            list NEXTHOP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf IP_ADDRESS {
+                    type union {
+                        type inet:ipv4-address;
+                        type inet:ipv6-address;
+                    }
+                }                  //<A.B.C.D|X:X::X:X>
+                leaf self {
+                    type enumeration {
+                        enum self;
+                    }
+                }
+            }
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf label {
+                    type enumeration {
+                        enum label;
+                    }
+                }                  //label
+            }
+            list RD {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+            }
+            list RT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf both {
+                    type enumeration {
+                        enum both;
+                    }
+                }                  //both
+                leaf-list ROUTER_TARGET {
+                    type string;
+                }                  //RTLIST...
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf import {
+                    type enumeration {
+                        enum import;
+                    }
+                }                  //import
+            }
+            list NO_EXPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['IPv4 routes', 'IPv6 routes']
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+            }
+            list NO_EXPORT_ROUTE-MAP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //NAME
+            }
+        }
+        container BGP_VNC_DEFAULTS_NODE {
+            list EXIT-VNC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list L2RD {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf FIXED_VALUE_1-255 {
+                    type int32;
+                }                  //(1-255)
+                leaf auto-vn {
+                    type enumeration {
+                        enum auto-vn;
+                    }
+                }
+            }
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf l2rd {
+                    type enumeration {
+                        enum l2rd;
+                    }
+                }                  //l2rd
+            }
+            list RD {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+            }
+            list RESPONSE-LIFETIME {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf RESPONSE_LIFETIME_IN_SECONDS {
+                    type string;
+                }                  //LIFETIME
+                leaf infinite {
+                    type enumeration {
+                        enum infinite;
+                    }
+                }
+            }
+            list RT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf both {
+                    type enumeration {
+                        enum both;
+                    }
+                }                  //both
+                leaf-list ROUTER_TARGET {
+                    type string;
+                }                  //RTLIST...
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf import {
+                    type enumeration {
+                        enum import;
+                    }
+                }                  //import
+            }
+        }
+        container BGP_VNC_L2_GROUP_NODE {
+            list LABELS {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf-list SPACE_SEPARATED_LIST_OF {
+                    type int32;
+                }                  //(0-1048575)...
+            }
+            list LOGICAL-NETWORK-ID {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf VALUE {
+                    type int32;
+                }                  //(0-4294967295)
+            }
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf labels {
+                    type enumeration {
+                        enum labels;
+                    }
+                }                  //labels
+                leaf-list SPACE_SEPARATED_LIST_OF {
+                    type int32;
+                }                  //(0-1048575)...
+            }
+            list RT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum both;
+                        enum export;
+                        enum import;
+                    }
+                }                  //<both|export|import> ['Export+import filters', 'Export filters', 'Import filters']
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+            }
+        }
+        container BGP_VNC_NVE_GROUP_NODE {
+            list EXPORT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum bgp;
+                        enum zebra;
+                    }
+                }                  //<bgp|zebra> ['Export to BGP', 'Export to Zebra (experimental)']
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['IPv4 routes', 'IPv6 routes']
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+                leaf PREFIX_LIST_NAME {
+                    type string;
+                }                  //NAME
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //NAME
+            }
+            list L2RD {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf FIXED_VALUE_1-255 {
+                    type int32;
+                }                  //(1-255)
+                leaf auto-vn {
+                    type enumeration {
+                        enum auto-vn;
+                    }
+                }
+            }
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf CHOICE_CASE {
+                    type enumeration {
+                        enum bgp;
+                        enum zebra;
+                    }
+                }                  //<bgp|zebra> ['Export to BGP', 'Export to Zebra (experimental)']
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['IPv4 routes', 'IPv6 routes']
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf l2rd {
+                    type enumeration {
+                        enum l2rd;
+                    }
+                }                  //l2rd
+            }
+            list PREFIX {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf OVERLAY_ADDRESS_MODE {
+                    type enumeration {
+                        enum vn;
+                        enum un;
+                    }
+                }                  //<vn|un> ['VN prefix', 'UN prefix']
+                leaf IPV4_PREFIX {
+                    type union {
+                        type inet:ipv4-prefix;
+                        type inet:ipv6-prefix;
+                    }
+                }                  //<A.B.C.D/M|X:X::X:X/M>
+            }
+            list RD {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf BGP_IDENTIFIER {
+                    type string;
+                }                  //ASN:NN_OR_IP-ADDRESS:NN
+            }
+            list RESPONSE-LIFETIME {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf RESPONSE_LIFETIME_IN_SECONDS {
+                    type string;
+                }                  //LIFETIME
+                leaf infinite {
+                    type enumeration {
+                        enum infinite;
+                    }
+                }
+            }
+            list RT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf both {
+                    type enumeration {
+                        enum both;
+                    }
+                }                  //both
+                leaf-list ROUTER_TARGET {
+                    type string;
+                }                  //RTLIST...
+                leaf export {
+                    type enumeration {
+                        enum export;
+                    }
+                }                  //export
+                leaf import {
+                    type enumeration {
+                        enum import;
+                    }
+                }                  //import
+            }
+            list REDISTRIBUTE_BGP-DIRECT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['IPv4 routes', 'IPv6 routes']
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+                leaf PREFIX_LIST_NAME {
+                    type string;
+                }                  //NAME
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf ROUTE_MAP_NAME {
+                    type string;
+                }                  //NAME
+            }
+            list NO_REDISTRIBUTE_BGP-DIRECT {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf REDISTRIBUTE_IP {
+                    type enumeration {
+                        enum ipv4;
+                        enum ipv6;
+                    }
+                }                  //<ipv4|ipv6> ['IPv4 routes', 'IPv6 routes']
+                leaf prefix-list {
+                    type enumeration {
+                        enum prefix-list;
+                    }
+                }                  //prefix-list
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+            }
+        }
+
+    }
+}

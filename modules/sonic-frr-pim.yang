@@ -1,0 +1,27 @@
+
+module sonic-frr-pim {
+    namespace "http://github.com/sonic-net/frr/sonic-frr-pim";
+    prefix frr-pim;
+    yang-version 1.1;
+
+    import ietf-inet-types {
+        prefix inet;
+    }
+
+    organization
+        "SONiC";
+
+    contact
+        "SONiC";
+
+    description
+        "SONIC frr-pim FRR YANG";
+
+    revision 2024-12-23 {
+        description
+            "Initial revision.";
+    }
+    container sonic-frr-pim {
+
+    }
+}

@@ -1,0 +1,329 @@
+
+module sonic-frr-ripng {
+    namespace "http://github.com/sonic-net/frr/sonic-frr-ripng";
+    prefix frr-ripng;
+    yang-version 1.1;
+
+    import ietf-inet-types {
+        prefix inet;
+    }
+
+    organization
+        "SONiC";
+
+    contact
+        "SONiC";
+
+    description
+        "SONIC frr-ripng FRR YANG";
+
+    revision 2024-12-23 {
+        description
+            "Initial revision.";
+    }
+    container sonic-frr-ripng {
+        container RIPNG_NODE {
+            list NO {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf aggregate-address {
+                    type enumeration {
+                        enum aggregate-address;
+                    }
+                }                  //aggregate-address
+                leaf AGGREGATE_NETWORK {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+                leaf allow-ecmp {
+                    type enumeration {
+                        enum allow-ecmp;
+                    }
+                }                  //allow-ecmp
+                leaf offset-list {
+                    type enumeration {
+                        enum offset-list;
+                    }
+                }                  //offset-list
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST6_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['For incoming updates', 'For outgoing updates']
+                leaf METRIC_VALUE {
+                    type int32;
+                }                  //(0-16)
+                leaf INTERFACE_TO_MATCH {
+                    type string;
+                }                  //IFNAME
+                leaf passive-interface {
+                    type enumeration {
+                        enum passive-interface;
+                    }
+                }                  //passive-interface
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //IFNAME
+                leaf redistribute {
+                    type enumeration {
+                        enum redistribute;
+                    }
+                }                  //redistribute
+                leaf FRR_REDIST_HELP_STR_RIPNGD {
+                    type string;
+                }                  //FRR_REDIST_STR_RIPNGD
+                leaf metric {
+                    type enumeration {
+                        enum metric;
+                    }
+                }                  //metric
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf POINTER_TO_ROUTE-MAP_ENTRIES {
+                    type string;
+                }                  //RMAP_NAME
+                leaf route {
+                    type enumeration {
+                        enum route;
+                    }
+                }                  //route
+                leaf SET_STATIC_RIPNG_ROUTE {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+            }
+            list AGGREGATE-ADDRESS {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf AGGREGATE_NETWORK {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+            }
+            list ALLOW-ECMP {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+            }
+            list DEFAULT-INFORMATION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf originate {
+                    type enumeration {
+                        enum originate;
+                    }
+                }                  //originate
+            }
+            list NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+                leaf IPV6_NETWORK {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+            }
+            list OFFSET-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST6_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['For incoming updates', 'For outgoing updates']
+                leaf METRIC_VALUE {
+                    type int32;
+                }                  //(0-16)
+                leaf INTERFACE_TO_MATCH {
+                    type string;
+                }                  //IFNAME
+            }
+            list PASSIVE-INTERFACE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //IFNAME
+            }
+            list REDISTRIBUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf FRR_REDIST_HELP_STR_RIPNGD {
+                    type string;
+                }                  //FRR_REDIST_STR_RIPNGD
+                leaf metric {
+                    type enumeration {
+                        enum metric;
+                    }
+                }                  //metric
+                leaf METRIC_VALUE {
+                    type int32;
+                }                  //(0-16)
+                leaf route-map {
+                    type enumeration {
+                        enum route-map;
+                    }
+                }                  //route-map
+                leaf POINTER_TO_ROUTE-MAP_ENTRIES {
+                    type string;
+                }                  //RMAP_NAME
+            }
+            list ROUTE {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf SET_STATIC_RIPNG_ROUTE {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+            }
+            list DEFAULT-METRIC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf DEFAULT_METRIC {
+                    type int32;
+                }                  //(1-16)
+            }
+            list TIMERS {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf basic {
+                    type enumeration {
+                        enum basic;
+                    }
+                }                  //basic
+                leaf ROUTING_TABLE_UPDATE_TIMER {
+                    type int32;
+                }                  //(1-65535)
+                leaf ROUTING_INFORMATION_TIMEOUT_TIMER {
+                    type int32;
+                }                  //(1-65535)
+                leaf GARBAGE_COLLECTION_TIMER_DEFAULT {
+                    type int32;
+                }                  //(1-65535)
+            }
+            list NO_DEFAULT-INFORMATION {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf originate {
+                    type enumeration {
+                        enum originate;
+                    }
+                }                  //originate
+            }
+            list NO_NETWORK {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+                leaf IPV6_NETWORK {
+                    type inet:ipv6-prefix;
+                }                  //X:X::X:X/M
+            }
+            list NO_DEFAULT-METRIC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf DEFAULT_METRIC {
+                    type int32;
+                }                  //(1-16)
+            }
+            list IPV6_DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf prefix {
+                    type enumeration {
+                        enum prefix;
+                    }
+                }                  //prefix
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST6_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming routing updates', 'Filter outgoing routing updates']
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list NO_IPV6_DISTRIBUTE-LIST {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf prefix {
+                    type enumeration {
+                        enum prefix;
+                    }
+                }                  //prefix
+                leaf ACCESS-LIST_NAME {
+                    type string;
+                }                  //ACCESSLIST6_NAME
+                leaf IN_OUT_BOUND {
+                    type enumeration {
+                        enum in;
+                        enum out;
+                    }
+                }                  //<in|out> ['Filter incoming routing updates', 'Filter outgoing routing updates']
+                leaf INTERFACE_NAME {
+                    type string;
+                }                  //WORD
+            }
+            list NO_TIMERS_BASIC {
+                key "PREFIX";
+                leaf PREFIX {
+                    type string; 
+                } 
+                leaf ROUTING_TABLE_UPDATE_TIMER {
+                    type int32;
+                }                  //(1-65535)
+                leaf ROUTING_INFORMATION_TIMEOUT_TIMER {
+                    type int32;
+                }                  //(1-65535)
+                leaf GARBAGE_COLLECTION_TIMER_DEFAULT {
+                    type int32;
+                }                  //(1-65535)
+            }
+        }
+
+    }
+}
